@@ -1,18 +1,22 @@
 import React, { useState } from "react";
 import "./Navbar.css";
 
-// PUBLIC_INTERFACE
+/**
+ * PUBLIC_INTERFACE
+ * Navbar component for FunBase.
+ * - The left-side logo (🎉 FunBase) acts as a Home/landing page link.
+ * - 'Home' is removed from the right-side navigation.
+ */
 function Navbar() {
   // For mobile hamburger & profile dropdown
   const [menuOpen, setMenuOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
 
-  // Example, simulate logged-in user
+  // Simulated logged-in user
   const userName = "Alex";
 
-  // Menu navigation structure
+  // Menu navigation structure (WITHOUT "Home")
   const navItems = [
-    { icon: "🏠", label: "Home", href: "#" },
     { icon: "🎮", label: "Games", href: "#" },
     { icon: "😂", label: "Memes", href: "#" },
     { icon: "🎬", label: "Movies", href: "#" },
@@ -30,9 +34,19 @@ function Navbar() {
   return (
     <nav className="funbase-navbar">
       <div className="navbar-left">
-        <span className="navbar-logo" tabIndex={0} aria-label="FunBase Home">
+        <a
+          className="navbar-logo"
+          tabIndex={0}
+          aria-label="FunBase Home"
+          href="#"
+          onClick={() => {
+            // Optional: Also close the menu/hamburger on logo click (mobile)
+            setMenuOpen(false);
+            setActiveIdx(-1); // Logo is not in main nav, so -1 or similar
+          }}
+        >
           🎉 <span className="logo-text">FunBase</span>
-        </span>
+        </a>
       </div>
       <button
         className={`navbar-hamburger${menuOpen ? " open" : ""}`}
