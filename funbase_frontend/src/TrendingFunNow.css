@@ -12,59 +12,59 @@
   --trfn-fact: #1a776f;
 }
 
+/* Layout & playful time-travel area */
 .trfn-main {
   min-height: 100vh;
-  background: linear-gradient(95deg, #fffaf5 88%, #ffeeff 100%);
+  background: linear-gradient(97deg, #fffaf5 88%, #ffeeff 100%);
   font-family: 'Poppins', Arial, 'Segoe UI', 'Comic Sans MS', sans-serif;
   padding-bottom: 2.2em;
 }
 
 .trfn-title {
   text-align: center;
-  font-size: 2.79em;
+  font-size: 2.99em;
   font-weight: 900;
   background: var(--trfn-grad);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-fill-color: transparent;
-  margin: 1.25em 0 0.12em 0;
+  margin: 1.4em 0 0.22em 0;
   letter-spacing: -1px;
-  filter: drop-shadow(0 2px 20px #ffe3fb77);
+  filter: drop-shadow(0 3px 24px #ffe3fb67);
 }
 
 .trfn-intro-sub {
   text-align: center;
-  font-size: 1.25em;
-  font-weight: 600;
-  color: #3d2251;
-  margin-bottom: 1.3em;
-  line-height: 1.45em;
-  opacity: 0.98;
+  font-size: 1.28em;
+  font-weight: 700;
+  color: #572264;
+  margin-bottom: 1.6em;
+  line-height: 1.5em;
+  opacity: 0.99;
 }
 
-/* --- Enhanced date picker --- */
+/* --- Enhanced time-travel date picker & quick buttons --- */
 .trfn-date-label {
   color: #9647db;
 }
 
 .trfn-date-input {
   background: #fff6fc;
-  border: 2.1px solid #f7d2ff;
+  border: 2.2px solid #f7d2ff;
   color: #a014a6;
-  font-size: 1.05em;
+  font-size: 1.07em;
   font-weight: 700;
-  border-radius: 1.12em;
-  padding: 0.18em 0.87em;
-  margin-bottom: 0;
-  margin-right: 0.33em;
+  border-radius: 1.22em;
+  padding: 0.22em 1em 0.22em 1em;
+  margin: 0 0.29em 0 0.55em;
   outline: none;
-  box-shadow: 0 1.7px 10px #fcc0ff20;
+  box-shadow: 0 1.7px 10px #fcc0ff1a;
   transition: border 0.15s;
 }
 .trfn-date-input:focus {
-  border: 2.2px solid #22ccff;
-  background: #ecfaff;
+  border: 2.3px solid #22ccff;
+  background: #e8fdff;
 }
 
 .trfn-picker-btn {
@@ -72,190 +72,215 @@
   color: #cb2daa;
   border: none;
   font-weight: 900;
-  padding: 0.33em 1.19em;
-  border-radius: 1.6em;
-  box-shadow: 0 2px 13px #ffcafc19;
-  font-size: 1.01em;
+  padding: 0.37em 1.25em;
+  border-radius: 1.7em;
+  box-shadow: 0 2px 13px #ffcafc16;
+  font-size: 1.09em;
   cursor: pointer;
-  margin-left: 0.1em;
-  transition: background 0.14s, color 0.13s, transform 0.11s;
+  margin-left: 0.13em;
+  margin-right: 0.13em;
+  transition: background 0.16s, color 0.13s, transform 0.13s;
   outline: none;
+  position: relative;
+  z-index: 6;
 }
 .trfn-picker-btn:hover,
 .trfn-picker-btn:focus-visible {
   background: linear-gradient(95deg, #ffedfe 10%, #a6ffe5 90%);
-  color: #7d49fc;
-  transform: scale(1.07) translateY(-1px);
+  color: #6b45ff;
+  transform: scale(1.08) translateY(-2px);
+  box-shadow: 0 3.5px 14px #ffcafc33, 0 2.5px 8px #d485ee19;
 }
 
 .trfn-scroll-wrap {
-  max-width: 980px;
+  max-width: 1000px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 3.1em;
-  padding: 1.1em;
+  padding: 1.15em;
 }
 
 .trfn-section {
   background: var(--trfn-card-bg);
   border-radius: var(--trfn-card-radius);
   box-shadow: var(--trfn-shadow);
-  padding: 2.1em 1.2em 1.81em 1.2em;
-  margin-bottom: 0.19em;
-  transition: box-shadow 0.21s;
+  padding: 2.2em 1.25em 1.92em 1.25em;
+  margin-bottom: 0.22em;
+  transition: box-shadow 0.23s;
 }
 
 .trfn-section h2 {
-  font-size: 1.45em;
+  font-size: 1.49em;
   font-weight: 900;
   color: var(--trfn-title-color);
-  margin-bottom: 1.08em;
+  margin-bottom: 1.2em;
   letter-spacing: -0.5px;
-  background: linear-gradient(93deg, #ae4bea 13%, #ffe742 61%, #36fcf9 100%);
+  background: linear-gradient(92deg, #ae4bea 14%, #ffe742 71%, #36fcf9 100%);
   background-clip: text; -webkit-background-clip: text;
   -webkit-text-fill-color: transparent; text-fill-color: transparent;
-  filter: drop-shadow(0 2px 8px #ffcafd55);
+  filter: drop-shadow(0 2.6px 8px #ffcafd75);
 }
 
-/* Memes */
+/* Meme Section: Colorful grid, playful hover */
 .trfn-meme-grid {
   display: flex;
-  gap: 1.4em;
+  gap: 1.5em;
   justify-content: center;
   flex-wrap: wrap;
 }
 
 .trfn-meme-card {
   background: linear-gradient(95deg, #fff6fa 88%, #e8fff4 100%);
-  box-shadow: 0 7px 23px #fbbcff1a, 0 2px 8px #fafcff16;
-  border-radius: 1.2em;
-  max-width: 270px;
+  box-shadow: 0 8px 27px #fbbcff20, 0 2px 8px #fafcff14;
+  border-radius: 1.25em;
+  max-width: 265px;
   width: 100%;
+  min-width: 210px;
   display: flex;
   flex-direction: column;
   align-items: stretch;
   overflow: hidden;
-  transition: box-shadow 0.15s, transform 0.14s;
+  transition: box-shadow 0.16s, transform 0.13s;
   outline: none;
 }
 .trfn-meme-card:hover, .trfn-meme-card:focus-visible {
-  box-shadow: 0 12px 41px #fdcaff49, 0 6px 20px #ffacff16;
-  transform: scale(1.045) translateY(-4px);
-  z-index: 2;
+  box-shadow: 0 12px 41px #fdcaff59, 0 6px 20px #ffacff28;
+  transform: scale(1.07) translateY(-7px) rotate(-2deg);
+  z-index: 3;
 }
 
 .trfn-meme-img {
   object-fit: contain;
   width: 100%;
-  max-height: 196px;
+  max-height: 202px;
   background: #f6fdff;
   display: block;
   margin: 0 auto;
+  border-bottom: 2.5px solid #ffe2fc;
 }
 
 .trfn-meme-meta {
-  padding: 1em 0.8em 1.2em 0.8em;
+  padding: 1em 0.8em 1.13em 0.8em;
   display: flex;
   flex-direction: column;
-  gap: 0.29em;
+  gap: 0.32em;
   color: var(--trfn-meme-title);
   font-weight: 700;
 }
 
 .trfn-meme-title {
-  font-size: 1.13em;
-  font-weight: 800;
-  margin-bottom: 0.2em;
+  font-size: 1.17em;
+  font-weight: 900;
+  margin-bottom: 0.23em;
 }
 
 .trfn-meme-subreddit {
   background: #f3faff;
   color: #00888c;
-  font-size: 0.91em;
+  font-size: 0.92em;
   border-radius: 1em;
-  padding: 0.11em 0.68em;
+  padding: 0.13em 0.8em;
   display: inline-block;
-  margin-bottom: 0.09em;
-  margin-right: 0.18em;
+  margin-bottom: 0.11em;
+  margin-right: 0.15em;
   font-weight: 600;
   text-decoration: none;
+  box-shadow: 0 2px 10px #69fffe0a;
 }
 
 .trfn-meme-author {
-  font-size: 0.97em;
+  font-size: 0.98em;
   color: #bb4fba;
-  opacity: 0.9;
+  opacity: 0.88;
 }
 
-/* Facts, holidays, news (grid) */
-.trfn-fact-grid, .trfn-card-flex {
+/* Facts, holidays, news (card grid, responsive, themed) */
+.trfn-fact-grid,
+.trfn-card-flex {
   display: flex;
-  gap: 1.39em;
+  gap: 1.42em 1.1em;
   flex-wrap: wrap;
   justify-content: flex-start;
   align-items: stretch;
 }
 
+/* Shared fact/holiday/news card style */
 .trfn-fact-card {
   background: var(--trfn-fact-bg);
   color: var(--trfn-fact);
-  border-radius: 1.1em;
-  padding: 1.2em 1.0em;
-  font-size: 1.12em;
-  font-weight: 700;
-  box-shadow: 0 3px 14px #7cfef017;
+  border-radius: 1.18em;
+  padding: 1.18em 1.07em;
+  font-size: 1.13em;
+  font-weight: 750;
+  box-shadow: 0 3.5px 14px #7cfef023;
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 0.72em;
-  min-width: 190px;
-  min-height: 70px;
-  transition: box-shadow 0.13s, transform 0.13s;
+  gap: 0.78em;
+  min-width: 180px;
+  min-height: 78px;
+  transition: box-shadow 0.14s, transform 0.13s, background 0.14s, color 0.13s;
   cursor: pointer;
   outline: none;
+  position: relative;
+  margin-bottom: 0.31em;
 }
 
 .trfn-fact-card:hover, .trfn-fact-card:focus-visible {
-  background: #f2ecff;
+  background: #f3ecff;
   color: #ba27ba;
-  box-shadow: 0 6px 22px #e27bfc10;
-  transform: scale(1.035);
+  box-shadow: 0 7px 22px #e27bfc24, 0 2px 10px #e77fff15;
+  transform: scale(1.045) translateY(-3px);
+  z-index: 4;
 }
 
 .trfn-fact-icon {
   font-size: 2.1em;
-  margin-right: 0.08em;
+  margin-right: 0.06em;
 }
 
-/* Video cards */
 .trfn-card-flex {
   display: flex;
-  gap: 1.25em 0.8em;
+  gap: 1.15em 0.92em;
   flex-wrap: wrap;
   justify-content: flex-start;
 }
 
 .trfn-loading {
   color: var(--trfn-loading);
-  font-size: 1.18em;
+  font-size: 1.22em;
   text-align: center;
-  margin: 1.1em 0;
+  margin: 1.23em 0;
 }
 .trfn-err {
   color: #e3736e;
   background: #ffeaea;
-  padding: 0.4em 1.1em;
-  border-radius: 1.3em;
+  padding: 0.43em 1.17em;
+  border-radius: 1.33em;
   font-weight: 900;
-  font-size: 1.03em;
-  margin: 0.9em 0;
+  font-size: 1.07em;
+  margin: 1.01em 0;
 }
 
-@media (max-width: 760px) {
-  .trfn-scroll-wrap { padding: 0.5em; }
-  .trfn-main { padding-bottom: 1.1em; }
-  .trfn-section { padding: 1.2em 0.3em 1.2em 0.3em; }
-  .trfn-meme-grid, .trfn-fact-grid, .trfn-card-flex { flex-direction: column; align-items: stretch; }
+/* Responsive adjustments for mobile & tablet */
+@media (max-width: 900px) {
+  .trfn-scroll-wrap { max-width: 99vw; }
+  .trfn-section { padding: 1.3em 0.37em 1.1em 0.37em; }
+  .trfn-meme-card { min-width: 160px; }
+  .trfn-fact-card { min-width: 100px; font-size: 1.01em;}
 }
+@media (max-width: 760px) {
+  .trfn-scroll-wrap { padding: 0.6em; }
+  .trfn-main { padding-bottom: 1.15em; }
+  .trfn-section { padding: 1.07em 0.15em 0.9em 0.15em; }
+  .trfn-meme-grid, .trfn-fact-grid, .trfn-card-flex {
+    flex-direction: column; align-items: stretch; gap: 1.19em 0;
+  }
+}
+@media (max-width: 420px) {
+  .trfn-title { font-size: 1.64em;}
+  .trfn-meme-card { min-width: 110px;}
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700;900&display=swap');
