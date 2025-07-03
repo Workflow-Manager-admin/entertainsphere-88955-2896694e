@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from './Navbar';
 import Home from './Home';
 import Memes from './Memes';
+import MovieSong from './MovieSong';
 import './App.css';
 import './Navbar.css';
 import './Home.css';
@@ -36,6 +37,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/memes" element={<Memes />} />
+          <Route path="/moviesongs" element={<MovieSong />} />
         </Routes>
       </div>
     </Router>
