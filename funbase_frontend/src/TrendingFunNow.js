@@ -356,7 +356,15 @@ function embedYoutube(url) {
 }
 
 
-// --- LIVE/TRENDING FUN SECTION CODE --- //
+/*
+  === LIVE/TRENDING FUN SECTION CODE ===
+  Adds a full-featured "Live/Trending Fun" area at bottom of the page:
+  - Playful time selector (Today, Yesterday, Last 7 Days, Part of Day, Custom)
+  - Tabs for Memes, Tweets, Clips, Fun Facts
+  - Fun randomizer button
+  - Themed feed/cards per tab and time
+  - All matching the modern playful/colorful design language
+*/
 const LIVETABS = [
   { label: "Memes", emoji: "😂" },
   { label: "Tweets", emoji: "🐦" },
@@ -364,12 +372,9 @@ const LIVETABS = [
   { label: "Fun Facts", emoji: "💡" },
 ];
 
-const PARTS_OF_DAY = [
-  "Morning", "Afternoon", "Evening", "Night"
-];
+const PARTS_OF_DAY = ["Morning", "Afternoon", "Evening", "Night"];
 
 function LiveTrendingFunSection() {
-  // UI states
   const [tab, setTab] = useState("Memes");
   const [timerange, setTimerange] = useState("Today");
   const [custom, setCustom] = useState({ from: "", to: "" });
@@ -379,55 +384,42 @@ function LiveTrendingFunSection() {
   const [error, setError] = useState("");
   const [autoRefresh, setAutoRefresh] = useState(false);
 
-  // On tab/time/partOfDay change
+  // On tab/time selector/part change – update feed
   useEffect(() => {
     fetchContent();
     // eslint-disable-next-line
   }, [tab, timerange, partOfDay, custom.from, custom.to]);
 
-  // Optionally: auto-refresh every 60s if enabled
+  // Optional: auto-refresh
   useEffect(() => {
     if (!autoRefresh) return;
     const t = setInterval(() => fetchContent(), 60000);
     return () => clearInterval(t);
     // eslint-disable-next-line
-  }, [tab, timerange, partOfDay, custom.from, custom.to, autoRefresh]);
+  }, [autoRefresh, tab, timerange, partOfDay, custom.from, custom.to]);
 
   // PUBLIC_INTERFACE
+  // Fetch content for tab/time/part/custom options
   function fetchContent({ randomOne = false } = {}) {
     setLoading(true);
     setError("");
     let feedAPI = "";
-    let params = [];
-    // Tab decides what public API or backend feed to use
-    // *Demo: uses placeholder public APIs (would swap for backend if set up)
+    // For demo: public APIs and hardcoded for Clips
     if (tab === "Memes") {
-      // Example: meme API
-      // e.g. https://meme-api.com/gimme/6
       feedAPI = randomOne
         ? "https://meme-api.com/gimme/1"
         : "https://meme-api.com/gimme/8";
     } else if (tab === "Tweets") {
-      // e.g. https://api.quotable.io/quotes?tags=famous,funny (simulate as no free tweets)
+      // Not real tweets: simulate with famous/funny quote (there's no free tweet api)
       feedAPI = "https://api.quotable.io/random?tags=funny|famous";
     } else if (tab === "Clips") {
-      // e.g. public TikTok/YouTube search - for demo, use YouTube search API (use fun topics)
-      // No key here: fallback to hardcode demo results
-      feedAPI = "";
+      feedAPI = ""; // Will fallback
     } else if (tab === "Fun Facts") {
       feedAPI = "https://uselessfacts.jsph.pl/random.json?language=en";
     }
 
-    if (timerange === "Today" || timerange === "Yesterday" || timerange === "Last 7 Days") {
-      params.push(timerange);
-    } else if (timerange === "Part of Day" && partOfDay) {
-      params.push(partOfDay);
-    } else if (timerange === "Custom" && custom.from && custom.to) {
-      params.push(custom.from, custom.to);
-    }
-    // Demo: Fetch from public APIs or fallback demo data
+    // Optionally factor timerange/part/custom into params (demo not wired to backend)
     if (feedAPI) {
-      // Memes and Facts: fetch list or random
       fetch(feedAPI)
         .then(resp => resp.json())
         .then(data => {
@@ -439,7 +431,8 @@ function LiveTrendingFunSection() {
                 ? data
                 : data && data.url
                   ? [data]
-                  : []).map(m => ({
+                  : []
+            ).map(m => ({
               id: m.postLink || m.url || Math.random(),
               type: "meme",
               title: m.title || "",
@@ -472,29 +465,29 @@ function LiveTrendingFunSection() {
           setLoading(false);
         });
     } else if (tab === "Clips") {
-      // For demo, hardcode a few "fun" YouTube IDs
+      // Hardcoded demo: fun YouTube video list
       let CLIP_DEMOS = [
         {
           id: "clip1",
           type: "clip",
-          ytId: "M1F81V-NhP0", // "Cat Vibing To Ievan Polkka"
+          ytId: "M1F81V-NhP0",
           title: "Cat Vibing",
           desc: "The internet's favorite dancing cat!",
         },
         {
           id: "clip2",
           type: "clip",
-          ytId: "RP4abiHdQpc", // "Cute Dog Showreel"
+          ytId: "RP4abiHdQpc",
           title: "Happy Dog Showreel",
           desc: "Wholesome dog moments.",
         },
         {
           id: "clip3",
           type: "clip",
-          ytId: "hzMgD0kT6Nw", // "People Ultimate Fails"
+          ytId: "hzMgD0kT6Nw",
           title: "Ultimate Fails",
           desc: "Try not to laugh!",
-        }
+        },
       ];
       setFunList(CLIP_DEMOS);
       setLoading(false);
@@ -504,12 +497,12 @@ function LiveTrendingFunSection() {
     }
   }
 
-  // PUBLIC_INTERFACE: Large button "Show Me Something Fun"
+  // PUBLIC_INTERFACE: Show me something fun - randomizer feeder
   function handleShowMeFun() {
     fetchContent({ randomOne: true });
   }
 
-  // UI for time selector
+  // UI: playful time selector
   function TimeSelector() {
     return (
       <div className="ltime-select-row">
@@ -518,7 +511,10 @@ function LiveTrendingFunSection() {
             className={`ltime-btn${timerange === mode ? " active" : ""}`}
             key={mode}
             aria-pressed={timerange === mode}
-            onClick={() => { setTimerange(mode); if (mode !== "Part of Day") setPartOfDay(""); }}
+            onClick={() => {
+              setTimerange(mode);
+              if (mode !== "Part of Day") setPartOfDay("");
+            }}
           >
             {mode}
           </button>
@@ -545,7 +541,7 @@ function LiveTrendingFunSection() {
               max={custom.to || getTodayISO()}
               aria-label="From date"
             />
-            <span style={{marginInline:3}}>to</span>
+            <span style={{ marginInline: 3 }}>to</span>
             <input
               type="date"
               value={custom.to}
@@ -561,7 +557,7 @@ function LiveTrendingFunSection() {
     );
   }
 
-  // UI for tab selector
+  // UI: tab selector with playful emoji
   function TabFilter() {
     return (
       <div className="ltabs-row">
@@ -582,7 +578,7 @@ function LiveTrendingFunSection() {
     );
   }
 
-  // Feed cards per tab
+  // Themed feed/cards per active tab
   function CardGrid() {
     if (loading) return (
       <div className="livefun-loading">Fetching trending fun... <span role="img" aria-label="wait">🌈</span></div>
@@ -625,7 +621,6 @@ function LiveTrendingFunSection() {
             );
           }
           if (tab === "Clips") {
-            // YouTube embeds, safe for demo only!
             return (
               <div className="livefun-card clip" key={card.id}>
                 <iframe
@@ -656,11 +651,11 @@ function LiveTrendingFunSection() {
     );
   }
 
-  // MAIN RENDER
+  // PUBLIC_INTERFACE
   return (
     <section className="livefun-section">
       <h2 className="livefun-title">
-        <span role="img" aria-label="zap" style={{fontSize:'1.1em',marginRight:7}}>⚡</span>
+        <span role="img" aria-label="zap" style={{ fontSize: "1.1em", marginRight: 7 }}>⚡</span>
         Live/Trending Fun
       </h2>
       <TimeSelector />

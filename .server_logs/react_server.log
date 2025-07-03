@@ -6,9 +6,9 @@ Attempting to bind to HOST environment variable: 0.0.0.0
 If this was unintentional, check that you haven't mistakenly set it in your shell.
 Learn more here: https://cra.link/advanced-config
 
-(node:52348) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+(node:55818) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
 (Use `node --trace-deprecation ...` to show where the warning was created)
-(node:52348) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+(node:55818) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
 Starting the development server...
 
 Compiled successfully!
@@ -22,160 +22,9 @@ Note that the development build is not optimized.
 To create a production build, use npm run build.
 
 webpack compiled successfully
-Proxy error: Could not proxy request /api/fun-events?date=2025-07-03 from vscode-internal-3487-beta.beta01.cloud.kavia.ai to http://localhost:5000.
-See https://nodejs.org/api/errors.html#errors_common_system_errors for more information (HPE_INVALID_CONSTANT).
-
-Proxy error: Could not proxy request /api/fun-events?date=2025-07-03 from vscode-internal-3487-beta.beta01.cloud.kavia.ai to http://localhost:5000.
-See https://nodejs.org/api/errors.html#errors_common_system_errors for more information (HPE_INVALID_CONSTANT).
-
-Proxy error: Could not proxy request /api/fun-events?date=2025-11-25 from vscode-internal-3487-beta.beta01.cloud.kavia.ai to http://localhost:5000.
-See https://nodejs.org/api/errors.html#errors_common_system_errors for more information (HPE_INVALID_CONSTANT).
-
-Proxy error: Could not proxy request /api/fun-events?date=2024-07-02 from vscode-internal-3487-beta.beta01.cloud.kavia.ai to http://localhost:5000.
-See https://nodejs.org/api/errors.html#errors_common_system_errors for more information (HPE_INVALID_CONSTANT).
-
-Proxy error: Could not proxy request /api/fun-events?date=2025-07-03 from vscode-internal-3487-beta.beta01.cloud.kavia.ai to http://localhost:5000.
-See https://nodejs.org/api/errors.html#errors_common_system_errors for more information (HPE_INVALID_CONSTANT).
-
-Proxy error: Could not proxy request /api/fun-events?date=2016-08-13 from vscode-internal-3487-beta.beta01.cloud.kavia.ai to http://localhost:5000.
-See https://nodejs.org/api/errors.html#errors_common_system_errors for more information (HPE_INVALID_CONSTANT).
-
-Proxy error: Could not proxy request /api/fun-events?date=2025-07-03 from vscode-internal-3487-beta.beta01.cloud.kavia.ai to http://localhost:5000.
-See https://nodejs.org/api/errors.html#errors_common_system_errors for more information (HPE_INVALID_CONSTANT).
-
-Proxy error: Could not proxy request /api/fun-events?date=2024-09-16 from vscode-internal-3487-beta.beta01.cloud.kavia.ai to http://localhost:5000.
-See https://nodejs.org/api/errors.html#errors_common_system_errors for more information (HPE_INVALID_CONSTANT).
-
-Proxy error: Could not proxy request /api/fun-events?date=2017-04-22 from vscode-internal-3487-beta.beta01.cloud.kavia.ai to http://localhost:5000.
-See https://nodejs.org/api/errors.html#errors_common_system_errors for more information (HPE_INVALID_CONSTANT).
-
-Proxy error: Could not proxy request /api/fun-events?date=2017-06-09 from vscode-internal-3487-beta.beta01.cloud.kavia.ai to http://localhost:5000.
-See https://nodejs.org/api/errors.html#errors_common_system_errors for more information (HPE_INVALID_CONSTANT).
-
-Proxy error: Could not proxy request /api/fun-events?date=2014-12-21 from vscode-internal-3487-beta.beta01.cloud.kavia.ai to http://localhost:5000.
-See https://nodejs.org/api/errors.html#errors_common_system_errors for more information (HPE_INVALID_CONSTANT).
-
-Proxy error: Could not proxy request /api/fun-events?date=2016-06-03 from vscode-internal-3487-beta.beta01.cloud.kavia.ai to http://localhost:5000.
-See https://nodejs.org/api/errors.html#errors_common_system_errors for more information (HPE_INVALID_CONSTANT).
-
-Proxy error: Could not proxy request /api/fun-events?date=2015-07-13 from vscode-internal-3487-beta.beta01.cloud.kavia.ai to http://localhost:5000.
-See https://nodejs.org/api/errors.html#errors_common_system_errors for more information (HPE_INVALID_CONSTANT).
-
-Proxy error: Could not proxy request /api/fun-events?date=2024-06-15 from vscode-internal-3487-beta.beta01.cloud.kavia.ai to http://localhost:5000.
-See https://nodejs.org/api/errors.html#errors_common_system_errors for more information (HPE_INVALID_CONSTANT).
-
-Proxy error: Could not proxy request /api/fun-events?date=2020-05-21 from vscode-internal-3487-beta.beta01.cloud.kavia.ai to http://localhost:5000.
-See https://nodejs.org/api/errors.html#errors_common_system_errors for more information (HPE_INVALID_CONSTANT).
-
-Proxy error: Could not proxy request /api/fun-events?date=2024-05-25 from vscode-internal-3487-beta.beta01.cloud.kavia.ai to http://localhost:5000.
-See https://nodejs.org/api/errors.html#errors_common_system_errors for more information (HPE_INVALID_CONSTANT).
-
-Proxy error: Could not proxy request /api/fun-events?date=2013-03-12 from vscode-internal-3487-beta.beta01.cloud.kavia.ai to http://localhost:5000.
-See https://nodejs.org/api/errors.html#errors_common_system_errors for more information (HPE_INVALID_CONSTANT).
-
-Proxy error: Could not proxy request /api/fun-events?date=2017-09-12 from vscode-internal-3487-beta.beta01.cloud.kavia.ai to http://localhost:5000.
-See https://nodejs.org/api/errors.html#errors_common_system_errors for more information (HPE_INVALID_CONSTANT).
-
-Proxy error: Could not proxy request /api/fun-events?date=2013-08-26 from vscode-internal-3487-beta.beta01.cloud.kavia.ai to http://localhost:5000.
-See https://nodejs.org/api/errors.html#errors_common_system_errors for more information (HPE_INVALID_CONSTANT).
-
-Proxy error: Could not proxy request /api/fun-events?date=2016-06-15 from vscode-internal-3487-beta.beta01.cloud.kavia.ai to http://localhost:5000.
-See https://nodejs.org/api/errors.html#errors_common_system_errors for more information (HPE_INVALID_CONSTANT).
-
-Proxy error: Could not proxy request /api/fun-events?date=2017-11-12 from vscode-internal-3487-beta.beta01.cloud.kavia.ai to http://localhost:5000.
-See https://nodejs.org/api/errors.html#errors_common_system_errors for more information (HPE_INVALID_CONSTANT).
-
-Proxy error: Could not proxy request /api/fun-events?date=2024-10-31 from vscode-internal-3487-beta.beta01.cloud.kavia.ai to http://localhost:5000.
-See https://nodejs.org/api/errors.html#errors_common_system_errors for more information (HPE_INVALID_CONSTANT).
-
-Proxy error: Could not proxy request /api/fun-events?date=2024-08-01 from vscode-internal-3487-beta.beta01.cloud.kavia.ai to http://localhost:5000.
-See https://nodejs.org/api/errors.html#errors_common_system_errors for more information (HPE_INVALID_CONSTANT).
-
-Proxy error: Could not proxy request /api/fun-events?date=2016-11-08 from vscode-internal-3487-beta.beta01.cloud.kavia.ai to http://localhost:5000.
-See https://nodejs.org/api/errors.html#errors_common_system_errors for more information (HPE_INVALID_CONSTANT).
-
-Proxy error: Could not proxy request /api/fun-events?date=2015-07-21 from vscode-internal-3487-beta.beta01.cloud.kavia.ai to http://localhost:5000.
-See https://nodejs.org/api/errors.html#errors_common_system_errors for more information (HPE_INVALID_CONSTANT).
-
-Proxy error: Could not proxy request /api/fun-events?date=2024-07-02 from vscode-internal-3487-beta.beta01.cloud.kavia.ai to http://localhost:5000.
-See https://nodejs.org/api/errors.html#errors_common_system_errors for more information (HPE_INVALID_CONSTANT).
-
 Compiling...
 Compiled successfully!
 webpack compiled successfully
-Compiling...
-Failed to compile.
-
-[eslint] 
-src/TrendingFunNow.js
-Syntax error: Expecting Unicode escape sequence \uXXXX. (353:52) (353:52)
-ERROR in ./src/TrendingFunNow.js
-Module build failed (from ./node_modules/babel-loader/lib/index.js):
-SyntaxError: /home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/src/TrendingFunNow.js: Expecting Unicode escape sequence \uXXXX. (353:52)
-
-  351 | function embedYoutube(url) {
-  352 |   if (!url) return "";
-> 353 |   const match = url.match(/(?:youtu\\.be\\/|youtube\\.com\\/(?:embed\\/|watch\\?v=|v\\/|shorts\\/))([A-Za-z0-9_-]{11})/);
-      |                                                     ^
-  354 |   if (!match) return url;
-  355 |   return `https://www.youtube.com/embed/${match[1]}`;
-  356 | }
-    at constructor (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:360:19)
-    at FlowParserMixin.raise (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:3327:19)
-    at FlowParserMixin.readWord1 (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:3287:16)
-    at FlowParserMixin.readWord (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:3307:23)
-    at FlowParserMixin.getTokenFromCode (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:3030:16)
-    at FlowParserMixin.getTokenFromCode (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:6970:11)
-    at FlowParserMixin.getTokenFromCode (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:5419:13)
-    at FlowParserMixin.nextToken (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:2510:10)
-    at FlowParserMixin.next (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:2423:10)
-    at FlowParserMixin.parseExprOp (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:10616:14)
-    at FlowParserMixin.parseExprOps (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:10585:17)
-    at FlowParserMixin.parseMaybeConditional (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:10558:23)
-    at FlowParserMixin.parseMaybeAssign (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:10521:21)
-    at FlowParserMixin.parseMaybeAssign (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:5773:18)
-    at /home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:10491:39
-    at FlowParserMixin.allowInAnd (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:12100:12)
-    at FlowParserMixin.parseMaybeAssignAllowIn (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:10491:17)
-    at FlowParserMixin.parseExprListItem (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:11858:18)
-    at FlowParserMixin.parseCallExpressionArguments (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:10927:22)
-    at FlowParserMixin.parseCoverCallAndAsyncArrowHead (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:10861:29)
-    at FlowParserMixin.parseSubscript (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:10798:19)
-    at FlowParserMixin.parseSubscript (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:5874:18)
-    at FlowParserMixin.parseSubscripts (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:10771:19)
-    at FlowParserMixin.parseSubscripts (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:5840:18)
-    at FlowParserMixin.parseExprSubscripts (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:10762:17)
-    at FlowParserMixin.parseUpdate (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:10743:21)
-    at FlowParserMixin.parseMaybeUnary (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:10723:23)
-    at FlowParserMixin.parseMaybeUnaryOrPrivate (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:10576:61)
-    at FlowParserMixin.parseExprOps (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:10581:23)
-    at FlowParserMixin.parseMaybeConditional (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:10558:23)
-    at FlowParserMixin.parseMaybeAssign (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:10521:21)
-    at FlowParserMixin.parseMaybeAssign (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:5773:18)
-    at /home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:10491:39
-    at FlowParserMixin.allowInAnd (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:12095:16)
-    at FlowParserMixin.parseMaybeAssignAllowIn (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:10491:17)
-    at FlowParserMixin.parseVar (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:13028:91)
-    at FlowParserMixin.parseVarStatement (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:12874:10)
-    at FlowParserMixin.parseStatementContent (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:12489:23)
-    at FlowParserMixin.parseStatementLike (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:12406:17)
-    at FlowParserMixin.parseStatementLike (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:5140:24)
-    at FlowParserMixin.parseStatementListItem (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:12386:17)
-    at FlowParserMixin.parseBlockOrModuleBlockBody (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:12960:61)
-    at FlowParserMixin.parseBlockBody (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:12953:10)
-    at FlowParserMixin.parseBlock (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:12941:10)
-    at FlowParserMixin.parseFunctionBody (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:11783:24)
-    at FlowParserMixin.parseFunctionBody (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:5117:11)
-    at FlowParserMixin.parseFunctionBodyAndFinish (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:11769:10)
-    at FlowParserMixin.parseFunctionBodyAndFinish (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:5125:18)
-    at /home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:13085:12
-    at FlowParserMixin.withSmartMixTopicForbiddingContext (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:12077:14)
-
-ERROR in [eslint] 
-src/TrendingFunNow.js
-  Line 353:52:  Parsing error: Expecting Unicode escape sequence \uXXXX. (353:52)
-
-webpack compiled with 2 errors
 Compiling...
 Compiled successfully!
 webpack compiled successfully
