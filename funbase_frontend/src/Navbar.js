@@ -82,33 +82,6 @@ function Navbar() {
               )}
             </li>
           ))}
-          <li className="navbar-profile-wrap">
-            <button
-              className={`navbar-link navbar-profile${profileOpen ? " open" : ""}`}
-              aria-haspopup="true"
-              aria-expanded={profileOpen}
-              aria-label="Profile"
-              onClick={handleProfileToggle}
-              tabIndex={0}
-            >
-              <span className="emoji">👤</span> <span className="profile-label">Profile</span>
-              <svg width="8" height="6" aria-hidden="true" fill="none" viewBox="0 0 8 6" className={`chevron${profileOpen ? " up" : ""}`}><path d="M1 1l3 3 3-3" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/></svg>
-            </button>
-            <div className={`profile-dropdown${profileOpen ? " show" : ""}`}>
-              <div className="dropdown-greet">Hey, {userName}! 👋</div>
-              <ul>
-                <li>
-                  <a href="#profile" tabIndex={profileOpen ? 0 : -1}>My Profile</a>
-                </li>
-                <li>
-                  <a href="#favorites" tabIndex={profileOpen ? 0 : -1}>Favorites ⭐</a>
-                </li>
-                <li>
-                  <a href="#logout" tabIndex={profileOpen ? 0 : -1}>Logout</a>
-                </li>
-              </ul>
-            </div>
-          </li>
         </ul>
       </div>
       {/* Overlay for mobile menu */}
