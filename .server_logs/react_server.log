@@ -46,3 +46,30 @@ See https://nodejs.org/api/errors.html#errors_common_system_errors for more info
 Proxy error: Could not proxy request /api/quotes?mood=Love from vscode-internal-3487-beta.beta01.cloud.kavia.ai to http://localhost:5000.
 See https://nodejs.org/api/errors.html#errors_common_system_errors for more information (HPE_INVALID_CONSTANT).
 
+Proxy error: Could not proxy request /api/quotes?mood=Motivation from vscode-internal-3487-beta.beta01.cloud.kavia.ai to http://localhost:5000.
+See https://nodejs.org/api/errors.html#errors_common_system_errors for more information (HPE_INVALID_CONSTANT).
+
+Proxy error: Could not proxy request /api/quotes?user=Alex from vscode-internal-3487-beta.beta01.cloud.kavia.ai to http://localhost:5000.
+See https://nodejs.org/api/errors.html#errors_common_system_errors for more information (HPE_INVALID_CONSTANT).
+
+Proxy error: Could not proxy request /api/quotes?mood=Motivation from vscode-internal-3487-beta.beta01.cloud.kavia.ai to http://localhost:5000.
+See https://nodejs.org/api/errors.html#errors_common_system_errors for more information (HPE_INVALID_CONSTANT).
+
+Proxy error: Could not proxy request /api/quotes?user=Alex from vscode-internal-3487-beta.beta01.cloud.kavia.ai to http://localhost:5000.
+See https://nodejs.org/api/errors.html#errors_common_system_errors for more information (HPE_INVALID_CONSTANT).
+
+Proxy error: Could not proxy request /api/quotes?mood=Motivation from vscode-internal-3487-beta.beta01.cloud.kavia.ai to http://localhost:5000.
+See https://nodejs.org/api/errors.html#errors_common_system_errors for more information (HPE_INVALID_CONSTANT).
+
+Proxy error: Could not proxy request /api/quotes?user=Alex from vscode-internal-3487-beta.beta01.cloud.kavia.ai to http://localhost:5000.
+See https://nodejs.org/api/errors.html#errors_common_system_errors for more information (HPE_INVALID_CONSTANT).
+
+Proxy error: Could not proxy request /api/quotes?user=Alex from vscode-internal-3487-beta.beta01.cloud.kavia.ai to http://localhost:5000.
+See https://nodejs.org/api/errors.html#errors_common_system_errors for more information (HPE_INVALID_CONSTANT).
+
+Proxy error: Could not proxy request /api/quotes?mood=Motivation from vscode-internal-3487-beta.beta01.cloud.kavia.ai to http://localhost:5000.
+See https://nodejs.org/api/errors.html#errors_common_system_errors for more information (HPE_INVALID_CONSTANT).
+
+Proxy error: Could not proxy request /api/quotes?mood=Funny from vscode-internal-3487-beta.beta01.cloud.kavia.ai to http://localhost:5000.
+See https://nodejs.org/api/errors.html#errors_common_system_errors for more information (HPE_INVALID_CONSTANT).
+
