@@ -6,9 +6,9 @@ Attempting to bind to HOST environment variable: 0.0.0.0
 If this was unintentional, check that you haven't mistakenly set it in your shell.
 Learn more here: https://cra.link/advanced-config
 
-(node:36635) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+(node:37020) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
 (Use `node --trace-deprecation ...` to show where the warning was created)
-(node:36635) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+(node:37020) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
 Starting the development server...
 
 Compiled successfully!
@@ -21,4 +21,15 @@ You can now view react-kavia in the browser.
 Note that the development build is not optimized.
 To create a production build, use npm run build.
 
+webpack compiled successfully
+Compiling...
+Failed to compile.
+
+Module not found: Error: Can't resolve './Quotes.css' in '/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/src'
+ERROR in ./src/Quotes.js 6:0-22
+Module not found: Error: Can't resolve './Quotes.css' in '/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/src'
+
+webpack compiled with 1 error
+Compiling...
+Compiled successfully!
 webpack compiled successfully
