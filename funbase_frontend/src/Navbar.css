@@ -28,19 +28,58 @@
 .navbar-logo {
   font-size: 2.0rem;
   letter-spacing: -1px;
-  font-weight: 800;
+  font-weight: 900;
   display: flex;
   align-items: center;
   user-select: none;
   cursor: pointer;
-  background: linear-gradient(90deg,#fe4ff4,#ffd76e 70%);
+  /* Vibrant rainbow gradient background, more playful and visible */
+  background: linear-gradient(91deg, #ff4fd8 6%, #fcff63 43%, #53fff0 69%, #ffa14a 86%, #fe4ff4 100%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
           text-fill-color: transparent;
-  text-shadow: 0 1px 16px rgba(252, 84, 255, 0.08);
-  transition: filter 0.2s cubic-bezier(.39,.52,.66,.27);
+  text-shadow:
+    0 2px 12px #fff94fA3,
+    0 1.5px 18px #ff50d8a1,
+    0 1px 0px #fee8e8;
+  filter: drop-shadow(0 2px 12px #faf66620);
+  transition:
+    filter 0.2s cubic-bezier(.39,.52,.66,.27),
+    text-shadow 0.32s cubic-bezier(.44,.34,.83,1.22);
+  border-radius: 0.6em;
+  padding: 0.06em 0.26em 0.08em 0.2em;
+  border: 2.2px solid #ffe86655;
+  position: relative;
+  z-index: 10;
 }
+
+.navbar-logo:hover, .navbar-logo:focus-visible {
+  filter: brightness(1.2) drop-shadow(0 0 16px #fff94fd4);
+  outline: 2.5px solid #ffec30;
+  text-shadow:
+    0 2.2px 14px #fff94ff4,
+    0 1.5px 30px #ff50d8,
+    0 1.5px 4px #1ca6ffa1;
+  background: linear-gradient(101deg, #fc6dec 10%, #ffd545 36%, #21fff0 57%, #fb955f 80%, #ff43ff 100%);
+}
+
+/* Slight glow under logo for fun, using an ::after pseudo-element */
+.navbar-logo::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  left: 50%;
+  top: 60%;
+  transform: translate(-50%, -50%);
+  width: 120%;
+  height: 60%;
+  background: radial-gradient(ellipse at center, #fff94f88 5%, #ff51ca66 55%, transparent 90%);
+  filter: blur(12px);
+  opacity: 0.55;
+  pointer-events: none;
+}
+
 .navbar-logo:focus-visible {
   outline: 2.5px solid #feb47b;
   outline-offset: 2px;
@@ -52,7 +91,26 @@
   font-family: var(--font-navbar);
   font-weight: 900;
   letter-spacing: 0px;
-  filter: drop-shadow(0 1px 2px #fffaa7d0);
+  /* Add a fun gradient and animation for even more distinction */
+  background: linear-gradient(93deg, #ffb5f7 17%, #6ecdf7 58%, #ffe97a 91%);
+  background-size: 200% 200%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+          text-fill-color: transparent;
+  animation: logo-glow-anim 2.6s infinite cubic-bezier(.42,1.65,.38,.95) alternate;
+  filter: drop-shadow(0 1px 2px #fff7b2b8) drop-shadow(0 0px 12px #ffc4ff32);
+}
+
+@keyframes logo-glow-anim {
+  0% {
+    background-position: 0% 40%;
+    filter: brightness(1) drop-shadow(0 1px 2px #fff7b2b8);
+  }
+  100% {
+    background-position: 98% 80%;
+    filter: brightness(1.43) drop-shadow(0 2px 18px #ffe661c8);
+  }
 }
 
 .navbar-menu {
