@@ -179,6 +179,9 @@ function TrendingFunNow() {
           )}
         </div>
       )}
+
+      {/* ---------- LIVE/TRENDING FUN INTERACTIVE SECTION ---------- */}
+      <LiveTrendingFunSection />
     </main>
   );
 }
@@ -350,6 +353,324 @@ function embedYoutube(url) {
   const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|watch\?v=|v\/|shorts\/))([A-Za-z0-9_-]{11})/);
   if (!match) return url;
   return `https://www.youtube.com/embed/${match[1]}`;
+}
+
+
+// --- LIVE/TRENDING FUN SECTION CODE --- //
+const LIVETABS = [
+  { label: "Memes", emoji: "😂" },
+  { label: "Tweets", emoji: "🐦" },
+  { label: "Clips", emoji: "🎬" },
+  { label: "Fun Facts", emoji: "💡" },
+];
+
+const PARTS_OF_DAY = [
+  "Morning", "Afternoon", "Evening", "Night"
+];
+
+function LiveTrendingFunSection() {
+  // UI states
+  const [tab, setTab] = useState("Memes");
+  const [timerange, setTimerange] = useState("Today");
+  const [custom, setCustom] = useState({ from: "", to: "" });
+  const [partOfDay, setPartOfDay] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [funList, setFunList] = useState([]);
+  const [error, setError] = useState("");
+  const [autoRefresh, setAutoRefresh] = useState(false);
+
+  // On tab/time/partOfDay change
+  useEffect(() => {
+    fetchContent();
+    // eslint-disable-next-line
+  }, [tab, timerange, partOfDay, custom.from, custom.to]);
+
+  // Optionally: auto-refresh every 60s if enabled
+  useEffect(() => {
+    if (!autoRefresh) return;
+    const t = setInterval(() => fetchContent(), 60000);
+    return () => clearInterval(t);
+    // eslint-disable-next-line
+  }, [tab, timerange, partOfDay, custom.from, custom.to, autoRefresh]);
+
+  // PUBLIC_INTERFACE
+  function fetchContent({ randomOne = false } = {}) {
+    setLoading(true);
+    setError("");
+    let feedAPI = "";
+    let params = [];
+    // Tab decides what public API or backend feed to use
+    // *Demo: uses placeholder public APIs (would swap for backend if set up)
+    if (tab === "Memes") {
+      // Example: meme API
+      // e.g. https://meme-api.com/gimme/6
+      feedAPI = randomOne
+        ? "https://meme-api.com/gimme/1"
+        : "https://meme-api.com/gimme/8";
+    } else if (tab === "Tweets") {
+      // e.g. https://api.quotable.io/quotes?tags=famous,funny (simulate as no free tweets)
+      feedAPI = "https://api.quotable.io/random?tags=funny|famous";
+    } else if (tab === "Clips") {
+      // e.g. public TikTok/YouTube search - for demo, use YouTube search API (use fun topics)
+      // No key here: fallback to hardcode demo results
+      feedAPI = "";
+    } else if (tab === "Fun Facts") {
+      feedAPI = "https://uselessfacts.jsph.pl/random.json?language=en";
+    }
+
+    if (timerange === "Today" || timerange === "Yesterday" || timerange === "Last 7 Days") {
+      params.push(timerange);
+    } else if (timerange === "Part of Day" && partOfDay) {
+      params.push(partOfDay);
+    } else if (timerange === "Custom" && custom.from && custom.to) {
+      params.push(custom.from, custom.to);
+    }
+    // Demo: Fetch from public APIs or fallback demo data
+    if (feedAPI) {
+      // Memes and Facts: fetch list or random
+      fetch(feedAPI)
+        .then(resp => resp.json())
+        .then(data => {
+          let cards = [];
+          if (tab === "Memes") {
+            cards = (data.memes
+              ? data.memes
+              : data instanceof Array
+                ? data
+                : data && data.url
+                  ? [data]
+                  : []).map(m => ({
+              id: m.postLink || m.url || Math.random(),
+              type: "meme",
+              title: m.title || "",
+              author: m.author || "",
+              image: m.url,
+              subreddit: m.subreddit || "",
+              url: m.postLink,
+            }));
+          } else if (tab === "Tweets") {
+            cards = [{
+              id: data._id || Math.random(),
+              type: "tweet",
+              text: data.content || "Check out this fun tweet!",
+              author: data.author || "user",
+              avatar: "🐦"
+            }];
+          } else if (tab === "Fun Facts") {
+            cards = [{
+              id: data.id || Math.random(),
+              type: "fact",
+              text: data.text || "",
+              source: data.source_url || ""
+            }];
+          }
+          setFunList(cards);
+          setLoading(false);
+        })
+        .catch(() => {
+          setError("Couldn't fetch trending fun! Try again later.");
+          setLoading(false);
+        });
+    } else if (tab === "Clips") {
+      // For demo, hardcode a few "fun" YouTube IDs
+      let CLIP_DEMOS = [
+        {
+          id: "clip1",
+          type: "clip",
+          ytId: "M1F81V-NhP0", // "Cat Vibing To Ievan Polkka"
+          title: "Cat Vibing",
+          desc: "The internet's favorite dancing cat!",
+        },
+        {
+          id: "clip2",
+          type: "clip",
+          ytId: "RP4abiHdQpc", // "Cute Dog Showreel"
+          title: "Happy Dog Showreel",
+          desc: "Wholesome dog moments.",
+        },
+        {
+          id: "clip3",
+          type: "clip",
+          ytId: "hzMgD0kT6Nw", // "People Ultimate Fails"
+          title: "Ultimate Fails",
+          desc: "Try not to laugh!",
+        }
+      ];
+      setFunList(CLIP_DEMOS);
+      setLoading(false);
+    } else {
+      setFunList([]);
+      setLoading(false);
+    }
+  }
+
+  // PUBLIC_INTERFACE: Large button "Show Me Something Fun"
+  function handleShowMeFun() {
+    fetchContent({ randomOne: true });
+  }
+
+  // UI for time selector
+  function TimeSelector() {
+    return (
+      <div className="ltime-select-row">
+        {["Today", "Yesterday", "Last 7 Days", "Part of Day", "Custom"].map(mode => (
+          <button
+            className={`ltime-btn${timerange === mode ? " active" : ""}`}
+            key={mode}
+            aria-pressed={timerange === mode}
+            onClick={() => { setTimerange(mode); if (mode !== "Part of Day") setPartOfDay(""); }}
+          >
+            {mode}
+          </button>
+        ))}
+        {timerange === "Part of Day" && (
+          <select
+            className="ltime-part-select"
+            value={partOfDay}
+            onChange={e => setPartOfDay(e.target.value)}
+          >
+            <option value="">Part...</option>
+            {PARTS_OF_DAY.map(part => (
+              <option key={part} value={part}>{part}</option>
+            ))}
+          </select>
+        )}
+        {timerange === "Custom" && (
+          <span className="ltime-custom-wrap">
+            <input
+              type="date"
+              value={custom.from}
+              onChange={e => setCustom(c => ({ ...c, from: e.target.value }))}
+              className="ltime-custom-date"
+              max={custom.to || getTodayISO()}
+              aria-label="From date"
+            />
+            <span style={{marginInline:3}}>to</span>
+            <input
+              type="date"
+              value={custom.to}
+              onChange={e => setCustom(c => ({ ...c, to: e.target.value }))}
+              className="ltime-custom-date"
+              min={custom.from || ""}
+              max={getTodayISO()}
+              aria-label="To date"
+            />
+          </span>
+        )}
+      </div>
+    );
+  }
+
+  // UI for tab selector
+  function TabFilter() {
+    return (
+      <div className="ltabs-row">
+        {LIVETABS.map(item => (
+          <button
+            key={item.label}
+            className={`ltab-btn${tab === item.label ? " active" : ""}`}
+            onClick={() => setTab(item.label)}
+            aria-pressed={tab === item.label}
+          >{item.emoji} {item.label}</button>
+        ))}
+        <label className="live-autorefresh-toggle">
+          <input type="checkbox" checked={autoRefresh} onChange={() => setAutoRefresh(v => !v)} />
+          <span className="chex">🔁</span>
+          <span className="autorefresh-label">Auto-refresh</span>
+        </label>
+      </div>
+    );
+  }
+
+  // Feed cards per tab
+  function CardGrid() {
+    if (loading) return (
+      <div className="livefun-loading">Fetching trending fun... <span role="img" aria-label="wait">🌈</span></div>
+    );
+    if (error) return <div className="livefun-err">{error}</div>;
+    if (!funList.length) return (
+      <div className="livefun-empty">
+        Nothing fun here just yet! Try a different time or tab.
+      </div>
+    );
+    return (
+      <div className="livefun-feedcards">
+        {funList.map(card => {
+          if (tab === "Memes") {
+            return (
+              <div className="livefun-card meme" key={card.id}>
+                <img src={card.image} alt={card.title || "Meme"} className="livefun-img" loading="lazy" />
+                <div className="livefun-metabar">
+                  <div className="lf-mt-title">{card.title}</div>
+                  <div className="lf-mt-meta">
+                    {card.subreddit && <span className="lf-meta lf-meta-subreddit">r/{card.subreddit}</span>}
+                    {card.author && <span className="lf-meta lf-meta-author">{card.author}</span>}
+                    {card.url && (
+                      <a href={card.url} className="lf-meta lf-meta-link" target="_blank" rel="noopener noreferrer">
+                        Source
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </div>
+            );
+          }
+          if (tab === "Tweets") {
+            return (
+              <div className="livefun-card tweet" key={card.id}>
+                <span className="lf-emoji">{card.avatar}</span>
+                <div className="lf-tweet-text">{card.text}</div>
+                {card.author && <div className="lf-meta lf-tweet-author">— {card.author}</div>}
+              </div>
+            );
+          }
+          if (tab === "Clips") {
+            // YouTube embeds, safe for demo only!
+            return (
+              <div className="livefun-card clip" key={card.id}>
+                <iframe
+                  src={`https://www.youtube.com/embed/${card.ytId}`}
+                  title={card.title}
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  style={{ borderRadius: "1.1em", width: "100%", minHeight: 145 }}
+                ></iframe>
+                <div className="lf-mt-title">{card.title}</div>
+                <div className="lf-mt-meta">{card.desc}</div>
+              </div>
+            );
+          }
+          if (tab === "Fun Facts") {
+            return (
+              <div className="livefun-card funfact" key={card.id}>
+                <span className="lf-emoji">💡</span>
+                <div className="lf-fact-text">{card.text}</div>
+                {card.source && <a href={card.source} className="lf-meta lf-meta-link" target="_blank" rel="noopener noreferrer">Source</a>}
+              </div>
+            );
+          }
+          return null;
+        })}
+      </div>
+    );
+  }
+
+  // MAIN RENDER
+  return (
+    <section className="livefun-section">
+      <h2 className="livefun-title">
+        <span role="img" aria-label="zap" style={{fontSize:'1.1em',marginRight:7}}>⚡</span>
+        Live/Trending Fun
+      </h2>
+      <TimeSelector />
+      <TabFilter />
+      <button className="show-me-fun-btn" type="button" onClick={handleShowMeFun}>
+        <span className="funbtn-emoji" role="img" aria-label="party popper">🎉</span> Show Me Something Fun!
+      </button>
+      <CardGrid />
+    </section>
+  );
 }
 
 export default TrendingFunNow;
