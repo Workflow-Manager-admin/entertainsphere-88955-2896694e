@@ -1,0 +1,259 @@
+:root {
+  --trfn-grad: linear-gradient(90deg, #fcff63 10%, #ff4fd8 53%, #4feaff 93%);
+  --trfn-card-bg: #fffdfd;
+  --trfn-border: #ffe0fa;
+  --trfn-accent: #4feaff;
+  --trfn-card-radius: 1.7em;
+  --trfn-shadow: 0 11px 38px #ffbfff18, 0 3px 12px #ffacee37;
+  --trfn-title-color: #e45cbe;
+  --trfn-meme-title: #4b277a;
+  --trfn-loading: #ae4bea;
+  --trfn-fact-bg: #f3fff5;
+  --trfn-fact: #1a776f;
+}
+
+.trfn-main {
+  min-height: 100vh;
+  background: linear-gradient(95deg, #fffaf5 88%, #ffeeff 100%);
+  font-family: 'Poppins', Arial, 'Segoe UI', 'Comic Sans MS', sans-serif;
+  padding-bottom: 2.2em;
+}
+
+.trfn-title {
+  text-align: center;
+  font-size: 2.79em;
+  font-weight: 900;
+  background: var(--trfn-grad);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+  margin: 1.25em 0 0.12em 0;
+  letter-spacing: -1px;
+  filter: drop-shadow(0 2px 20px #ffe3fb77);
+}
+
+.trfn-intro-sub {
+  text-align: center;
+  font-size: 1.25em;
+  font-weight: 600;
+  color: #3d2251;
+  margin-bottom: 1.3em;
+  line-height: 1.45em;
+  opacity: 0.98;
+}
+
+.trfn-scroll-wrap {
+  max-width: 980px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 3.1em;
+  padding: 1.1em;
+}
+
+.trfn-section {
+  background: var(--trfn-card-bg);
+  border-radius: var(--trfn-card-radius);
+  box-shadow: var(--trfn-shadow);
+  padding: 2.1em 1.2em 1.81em 1.2em;
+  margin-bottom: 0.19em;
+  transition: box-shadow 0.21s;
+}
+
+.trfn-section h2 {
+  font-size: 1.58em;
+  font-weight: 900;
+  color: var(--trfn-title-color);
+  margin-bottom: 1.08em;
+  letter-spacing: -0.5px;
+  background: linear-gradient(93deg, #ae4bea 13%, #ffe742 61%, #36fcf9 100%);
+  background-clip: text; -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; text-fill-color: transparent;
+  filter: drop-shadow(0 2px 8px #ffcafd55);
+}
+
+/* Memes */
+.trfn-meme-grid {
+  display: flex;
+  gap: 1.4em;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.trfn-meme-card {
+  background: linear-gradient(95deg, #fff6fa 88%, #e8fff4 100%);
+  box-shadow: 0 7px 23px #fbbcff1a, 0 2px 8px #fafcff16;
+  border-radius: 1.2em;
+  max-width: 270px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  overflow: hidden;
+  transition: box-shadow 0.15s, transform 0.14s;
+  outline: none;
+}
+
+.trfn-meme-card:hover, .trfn-meme-card:focus-visible {
+  box-shadow: 0 12px 41px #fdcaff49, 0 6px 20px #ffacff16;
+  transform: scale(1.045) translateY(-4px);
+  z-index: 2;
+}
+
+.trfn-meme-img {
+  object-fit: contain;
+  width: 100%;
+  max-height: 196px;
+  background: #f6fdff;
+  display: block;
+  margin: 0 auto;
+}
+
+.trfn-meme-meta {
+  padding: 1em 0.8em 1.2em 0.8em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.29em;
+  color: var(--trfn-meme-title);
+  font-weight: 700;
+}
+
+.trfn-meme-title {
+  font-size: 1.13em;
+  font-weight: 800;
+  margin-bottom: 0.2em;
+}
+
+.trfn-meme-subreddit {
+  background: #f3faff;
+  color: #00888c;
+  font-size: 0.91em;
+  border-radius: 1em;
+  padding: 0.11em 0.68em;
+  display: inline-block;
+  margin-bottom: 0.09em;
+  margin-right: 0.18em;
+  font-weight: 600;
+}
+
+.trfn-meme-author {
+  font-size: 0.97em;
+  color: #bb4fba;
+  opacity: 0.9;
+}
+
+/* Facts */
+.trfn-fact-grid {
+  display: flex;
+  gap: 1.39em;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.trfn-fact-card {
+  background: var(--trfn-fact-bg);
+  color: var(--trfn-fact);
+  border-radius: 1.1em;
+  padding: 1.2em 1.0em;
+  font-size: 1.12em;
+  font-weight: 700;
+  box-shadow: 0 3px 14px #7cfef017;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.72em;
+  min-width: 190px;
+}
+
+.trfn-fact-icon {
+  font-size: 2.1em;
+  margin-right: 0.08em;
+}
+
+/* Jokes */
+.trfn-joke-card {
+  border-radius: 1.09em;
+  background: linear-gradient(95deg, #fffefb 80%, #fffaff 120%);
+  color: #7d1990;
+  font-size: 1.21em;
+  font-weight: 700;
+  box-shadow: 0 2px 10px #ffc8ff19;
+  padding: 1.1em 0.6em;
+  text-align: center;
+}
+
+.trfn-joke-setup { margin-bottom: 0.8em; }
+.trfn-joke-delim { font-size: 1.3em; opacity: 0.27; font-weight: 900; letter-spacing: 0.2em; }
+.trfn-joke-delivery { font-size: 1.22em; font-weight: 800; color: #f15dda; }
+
+/* Quotes */
+.trfn-quote-card {
+  border-radius: 1.07em;
+  background: linear-gradient(92deg, #fbbbf9 15%, #fff481 100%);
+  color: #4A2958;
+  font-style: italic;
+  font-size: 1.25em;
+  box-shadow: 0 3px 17px #fae6ed41;
+  padding: 1em 1.2em 1.4em 1.2em;
+  max-width: 550px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.trfn-quote-text {
+  font-size: 1.28em;
+}
+
+.trfn-quote-author {
+  margin-top: 1em;
+  font-size: 1.02em;
+  font-style: normal;
+  font-weight: 900;
+  color: #ba27ba;
+}
+
+/* Photo break */
+.trfn-photo-area {
+  text-align: center;
+}
+.trfn-photo-img {
+  width: 100%;
+  max-width: 480px;
+  max-height: 320px;
+  border-radius: 1.22em;
+  box-shadow: 0 3px 19px #a3ebfd19;
+  object-fit: cover;
+  margin: 0 auto;
+}
+
+/* Loading & Errors */
+.trfn-loading {
+  color: var(--trfn-loading);
+  font-size: 1.18em;
+  text-align: center;
+  margin: 1.1em 0;
+}
+.trfn-err {
+  color: #e3736e;
+  background: #ffeaea;
+  padding: 0.4em 1.1em;
+  border-radius: 1.3em;
+  font-weight: 900;
+  font-size: 1.03em;
+  margin: 0.9em 0;
+}
+
+/* Responsive */
+@media (max-width: 760px) {
+  .trfn-scroll-wrap { padding: 0.5em; }
+  .trfn-main { padding-bottom: 1.1em; }
+  .trfn-section { padding: 1.2em 0.3em 1.2em 0.3em; }
+  .trfn-meme-grid, .trfn-fact-grid { flex-direction: column; align-items: stretch; }
+  .trfn-photo-img { max-width: 95vw; }
+  .trfn-quote-card { font-size: 1.07em; }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700;900&display=swap');

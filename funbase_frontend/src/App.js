@@ -5,6 +5,7 @@ import Home from './Home';
 import Memes from './Memes';
 import MovieSong from './MovieSong';
 import Quotes from './Quotes';
+import TrendingFunNow from './TrendingFunNow';
 import './App.css';
 import './Navbar.css';
 import './Home.css';
@@ -36,6 +37,7 @@ function App() {
           {theme === 'light' ? '🌙 Dark' : '☀️ Light'}
         </button>
         <Routes>
+          <Route path="/trending-fun-now" element={<TrendingFunNow />} />
           <Route path="/" element={<Home />} />
           <Route path="/memes" element={<Memes />} />
           <Route path="/moviesongs" element={<MovieSong />} />

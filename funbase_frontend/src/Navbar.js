@@ -18,7 +18,7 @@ function Navbar() {
 
   // Menu navigation structure (WITHOUT "Home")
   const navItems = [
-    { icon: "🎮", label: "Games", path: "/" }, // For now, Games points to Home
+    { icon: "🔥", label: "Trending Fun Now", path: "/trending-fun-now" },
     { icon: "😂", label: "Memes", path: "/memes" },
     { icon: "🎬", label: "Movies/Songs", path: "/moviesongs" },
     { icon: "💬", label: "Quotes", path: "/quotes" },
