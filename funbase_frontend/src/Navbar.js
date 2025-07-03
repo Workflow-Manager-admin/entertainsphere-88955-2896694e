@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import "./Navbar.css";
 
 /**
@@ -17,10 +18,10 @@ function Navbar() {
 
   // Menu navigation structure (WITHOUT "Home")
   const navItems = [
-    { icon: "🎮", label: "Games", href: "#" },
-    { icon: "😂", label: "Memes", href: "#" },
-    { icon: "🎬", label: "Movies", href: "#" },
-    { icon: "💬", label: "Quotes", href: "#" },
+    { icon: "🎮", label: "Games", path: "/" }, // For now, Games points to Home
+    { icon: "😂", label: "Memes", path: "/memes" },
+    { icon: "🎬", label: "Movies", path: "#" },
+    { icon: "💬", label: "Quotes", path: "#" },
   ];
 
   // PUBLIC_INTERFACE
@@ -28,27 +29,23 @@ function Navbar() {
   // PUBLIC_INTERFACE
   const handleProfileToggle = () => setProfileOpen((v) => !v);
 
-  // Optionally, highlight "active" via window.location or state
-  const [activeIdx, setActiveIdx] = useState(0);
+  const location = useLocation();
 
   return (
     <nav className="funbase-navbar">
       <div className="navbar-left">
-        <a
+        <Link
           className="navbar-logo"
           tabIndex={0}
           aria-label="FunBase Home"
-          href="#"
-          onClick={e => {
-            e.preventDefault();
-            // Home is loaded as the landing page, so reload
+          to="/"
+          onClick={() => {
             window.scrollTo({ top: 0, behavior: "smooth" });
             setMenuOpen(false);
-            setActiveIdx(-1);
           }}
         >
           🎉 <span className="logo-text">FunBase</span>
-        </a>
+        </Link>
       </div>
       <button
         className={`navbar-hamburger${menuOpen ? " open" : ""}`}
@@ -65,17 +62,24 @@ function Navbar() {
         <ul>
           {navItems.map((item, idx) => (
             <li key={item.label}>
-              <a
-                href={item.href}
-                className={`navbar-link${activeIdx === idx ? " active" : ""}`}
-                aria-current={activeIdx === idx ? "page" : undefined}
-                onClick={() => {
-                  setActiveIdx(idx);
-                  setMenuOpen(false); // close mobile menu
-                }}
-              >
-                <span className="emoji">{item.icon}</span> {item.label}
-              </a>
+              {item.path.startsWith("/") ? (
+                <Link
+                  to={item.path}
+                  className={`navbar-link${location.pathname === item.path ? " active" : ""}`}
+                  aria-current={location.pathname === item.path ? "page" : undefined}
+                  onClick={() => setMenuOpen(false)} // close mobile menu
+                >
+                  <span className="emoji">{item.icon}</span> {item.label}
+                </Link>
+              ) : (
+                <a
+                  href={item.path}
+                  className="navbar-link"
+                  tabIndex={0}
+                >
+                  <span className="emoji">{item.icon}</span> {item.label}
+                </a>
+              )}
             </li>
           ))}
           <li className="navbar-profile-wrap">

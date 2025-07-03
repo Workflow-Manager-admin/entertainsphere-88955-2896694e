@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from './Navbar';
 import Home from './Home';
+import Memes from './Memes';
 import './App.css';
 import './Navbar.css';
 import './Home.css';
@@ -20,18 +22,23 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <Navbar />
-      <button 
-        className="theme-toggle" 
-        onClick={toggleTheme}
-        aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
-        style={{ position: "fixed", top: 22, right: 22, zIndex: 1111 }}
-      >
-        {theme === 'light' ? '🌙 Dark' : '☀️ Light'}
-      </button>
-      <Home />
-    </div>
+    <Router>
+      <div className="App">
+        <Navbar />
+        <button
+          className="theme-toggle"
+          onClick={toggleTheme}
+          aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+          style={{ position: "fixed", top: 22, right: 22, zIndex: 1111 }}
+        >
+          {theme === 'light' ? '🌙 Dark' : '☀️ Light'}
+        </button>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/memes" element={<Memes />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
