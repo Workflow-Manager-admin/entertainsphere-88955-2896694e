@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './Navbar';
-import logo from './logo.svg';
+import Home from './Home';
 import './App.css';
 import './Navbar.css';
+import './Home.css';
 
 // PUBLIC_INTERFACE
 function App() {
@@ -21,30 +22,15 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      <header className="App-header">
-        <button 
-          className="theme-toggle" 
-          onClick={toggleTheme}
-          aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
-        >
-          {theme === 'light' ? '🌙 Dark' : '☀️ Light'}
-        </button>
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <p>
-          Current theme: <strong>{theme}</strong>
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button 
+        className="theme-toggle" 
+        onClick={toggleTheme}
+        aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+        style={{ position: "fixed", top: 22, right: 22, zIndex: 1111 }}
+      >
+        {theme === 'light' ? '🌙 Dark' : '☀️ Light'}
+      </button>
+      <Home />
     </div>
   );
 }

@@ -39,10 +39,12 @@ function Navbar() {
           tabIndex={0}
           aria-label="FunBase Home"
           href="#"
-          onClick={() => {
-            // Optional: Also close the menu/hamburger on logo click (mobile)
+          onClick={e => {
+            e.preventDefault();
+            // Home is loaded as the landing page, so reload
+            window.scrollTo({ top: 0, behavior: "smooth" });
             setMenuOpen(false);
-            setActiveIdx(-1); // Logo is not in main nav, so -1 or similar
+            setActiveIdx(-1);
           }}
         >
           🎉 <span className="logo-text">FunBase</span>
