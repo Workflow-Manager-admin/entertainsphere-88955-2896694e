@@ -10,7 +10,6 @@ import "./Quotes.css";
  *   - POST /api/quotes — add new quote (by user)
  */
 const MOODS = [
-  { name: "All", emoji: "🌈" },
   { name: "Motivation", emoji: "🚀" },
   { name: "Funny", emoji: "😂" },
   { name: "Love", emoji: "💖" },
@@ -51,7 +50,7 @@ const DEFAULT_QUOTES = [
 function Quotes() {
   const [quotes, setQuotes] = useState([]);
   const [search, setSearch] = useState("");
-  const [mood, setMood] = useState("All");
+  const [mood, setMood] = useState(MOODS[0].name); // Default to first (Motivation)
   const [loading, setLoading] = useState(false);
   const [user] = useState(DEMO_USER);
   const [showAdd, setShowAdd] = useState(false);
@@ -79,7 +78,7 @@ function Quotes() {
   function fetchQuotes() {
     setLoading(true);
     let url = "/api/quotes";
-    if (mood && mood !== "All" && mood !== "Random") url += `?mood=${encodeURIComponent(mood)}`;
+    if (mood && mood !== "Random") url += `?mood=${encodeURIComponent(mood)}`;
     else if (mood === "Random") url += "?random=6";
     if (search) url += `${url.includes("?") ? "&" : "?"}search=${encodeURIComponent(search)}`;
     fetch(url)
@@ -304,7 +303,7 @@ function Quotes() {
             Mood/Category:
             <select value={addMood} onChange={e => setAddMood(e.target.value)} disabled={addPending}>
               <option value="">Pick one</option>
-              {MOODS.filter(m => m.name !== "All" && m.name !== "Random").map(m => (
+              {MOODS.filter(m => m.name !== "Random").map(m => (
                 <option value={m.name} key={m.name}>{m.emoji} {m.name}</option>
               ))}
             </select>
