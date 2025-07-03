@@ -110,19 +110,12 @@
   font-weight: 900;
   font-family: 'Poppins', 'Comic Sans MS', 'Segoe UI', Arial, sans-serif;
   letter-spacing: -1.2px;
-  /* Distinct NEON gradient: blue-purple-pink-lime-green, for max contrast */
-  background: linear-gradient(97deg, #66FF99 8%, #25F0FF 32%, #A34BFF 60%, #F756BB 77%, #FFFF75 94%);
-  background-size: 400% 100%;
-  background-clip: text; -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; text-fill-color: transparent;
-  animation: neonGradientPop 2.8s infinite alternate cubic-bezier(.44,.19,.72,.86);
+  color: #fff; /* Use pure white for maximum contrast and readability */
   text-shadow:
-      0 2px 30px #18ffb815,
-      0 4px 50px #181bff24,
-      0 0px 7px #fdf67c,
-      0 0px 0px #fff,
-      0 0.5px 22px #30fcff99;
-  filter: drop-shadow(0 4px 36px #61a7ff6e) brightness(1.19) saturate(1.13);
+    0 1.5px 7px #0006,
+    0 0.5px 12px #fff9,
+    0 0px 2px #aaeffc66;
+  filter: drop-shadow(0 2px 22px #fff9) brightness(1.09);
   display: flex;
   align-items: center;
   gap: 0.22em;
@@ -132,12 +125,7 @@
   position: relative;
 }
 
-/* NEW keyframes for punchy neon effect */
-@keyframes neonGradientPop {
-  0% { background-position: 0% 51%; filter: brightness(1.18) saturate(1.10);}
-  92% { filter: brightness(1.37) saturate(1.24);}
-  100% { background-position: 100% 63%; filter: brightness(1.34) saturate(1.33);}
-}
+/* Remove neonGradientPop animation and keyframes */
 
 .emoji-burst-left, .emoji-burst-right {
   font-size: 1.17em;
@@ -156,19 +144,12 @@
 }
 
 .funbase-text-effect {
-  background: linear-gradient(99deg, #fff 2%, #f574fc 31%, #74fafc 69%, #fff 98%);
-  background-size: 260% 100%;
-  background-clip: text; -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; text-fill-color: transparent;
-  animation: shimmerNewFunbase 3.3s infinite alternate cubic-bezier(.52,.19,.72,1.04);
+  color: #fff; /* Solid white for clarity */
   padding: 0.03em 0.13em;
   border-radius: 0.21em;
-  filter: brightness(1.15) drop-shadow(0 5px 35px #d5fcff80);
+  filter: none;
 }
-@keyframes shimmerNewFunbase {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 85% 51%; }
-}
+/* Remove shimmerNewFunbase animation and keyframes */
 
 /* Rainbow animated underline below the title */
 .animated-underline {
@@ -198,25 +179,19 @@
   font-weight: 900;
   margin-top: 1.9rem;
   margin-bottom: 0.31em;
-  background: linear-gradient(90deg, #ff79d6 11%, #fffb74 67%, #53fff0 100%);
-  background-clip: text; -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; text-fill-color: transparent;
-  filter: drop-shadow(0 1.5px 17px #fd55ff48) brightness(1.04);
+  color: #fff;
+  text-shadow:
+    0 2.5px 10px #390f6d66,
+    0 0.5px 6px #fff;
+  filter: none;
 }
 .brand-glow {
-  background: linear-gradient(99deg, #54ffd6 19%, #c7b3ff 54%, #EEFF1B 81%);
-  background-clip: text; -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; text-fill-color: transparent;
+  color: #fff; /* Solid white for full heading consistency */
   padding-inline: 0.12em;
   border-radius: 0.27em;
-  filter: brightness(1.17) drop-shadow(0 2.2px 18px #3fffcb85) drop-shadow(0 1px 7.5px #eaff1811);
-  animation: neonBrandPop 3.8s infinite alternate cubic-bezier(.47,.43,.63,1.03);
+  filter: none;
 }
-@keyframes neonBrandPop {
-  0% { filter: brightness(1.16) drop-shadow(0 2.2px 14px #3fffcb85);}
-  44% { filter: brightness(1.29) drop-shadow(0 2.7px 22px #eafffa99);}
-  100% { filter: brightness(1.26) drop-shadow(0 2.9px 30px #3fcfb885);}
-}
+/* Remove neonBrandPop animation and keyframes */
 
 .home-subtext {
   color: #33394f;
