@@ -1,6 +1,92 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./Memes.css";
 
+// --- Default memes as fallback ---
+// These CAN be placed in a util file but for this scope, in-module is suitable.
+const DEFAULT_MEMES = [
+  {
+    id: "default1",
+    image_url: "https://i.imgur.com/7FVqB2D.jpg",
+    caption: "When you drop your phone but it lands screen up.",
+    tags: "funny,relief,phone",
+    uploader: "AutoMemer",
+    timestamp: Date.now() - 600000, // 10m ago
+    likes: [],
+  },
+  {
+    id: "default2",
+    image_url: "https://i.imgur.com/AaQLFri.jpeg",
+    caption: "Coding at 3am like:",
+    tags: "programming,relatable,night",
+    uploader: "MemeBot",
+    timestamp: Date.now() - 1700000,
+    likes: ["Alex"],
+  },
+  {
+    id: "default3",
+    image_url: "https://i.imgur.com/qkdpN.jpg",
+    caption: "Me trying to eat healthy for one day.",
+    tags: "food,life,funny",
+    uploader: "MemeTeam",
+    timestamp: Date.now() - 3500000,
+    likes: [],
+  },
+  {
+    id: "default4",
+    image_url: "https://i.imgur.com/8B7VsXW.jpg",
+    caption: "When WiFi finally reconnects.",
+    tags: "wifi,celebrate,joy",
+    uploader: "LOL",
+    timestamp: Date.now() - 800000,
+    likes: ["Joy"],
+  },
+  {
+    id: "default5",
+    image_url: "https://i.imgur.com/Oi4J1co.jpeg",
+    caption: "That Friday feeling.",
+    tags: "friday,weekend,party",
+    uploader: "TGIF",
+    timestamp: Date.now() - 4200000,
+    likes: [],
+  },
+  {
+    id: "default6",
+    image_url: "https://i.imgur.com/BkFiUzy.jpeg",
+    caption: "When you realize it’s Monday tomorrow...",
+    tags: "monday,sad,week",
+    uploader: "MemeBot",
+    timestamp: Date.now() - 9000000,
+    likes: [],
+  },
+  {
+    id: "default7",
+    image_url: "https://i.imgur.com/bYqFwl5.jpeg",
+    caption: "Trying to act normal in a video call.",
+    tags: "awkward,video call",
+    uploader: "MemeTeam",
+    timestamp: Date.now() - 6730000,
+    likes: [],
+  },
+  {
+    id: "default8",
+    image_url: "https://i.imgur.com/6bdz6Er.jpg",
+    caption: "That 'one more episode' promise.",
+    tags: "series,tv,funny",
+    uploader: "AutoMemer",
+    timestamp: Date.now() - 10400000,
+    likes: [],
+  }
+];
+
+// Returns a shuffled copy (Fisher-Yates) of the array, sampled to 'count' items
+function randomSample(array, count) {
+  const arr = array.slice();
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr.slice(0, count);
+}
 /**
  * PUBLIC_INTERFACE
  * Memes page for FunBase: trending meme grid, upload, filter & actions (like/save/share), themed and responsive.
@@ -153,19 +239,53 @@ function Memes() {
         <h2 className="memes-grid-title">😂 Trending Memes</h2>
         {loading ? (
           <div className="memes-loading">Loading memes...</div>
-        ) : memes.length === 0 ? (
-          <div className="memes-nodata">No memes found. Try uploading or changing your search!</div>
-        ) : (
+        ) : (memes.length === 0) ? (
+          // Even if zero backend memes: display 6 defaults
           <div className="memes-grid">
-            {memes.map((meme) => (
+            {randomSample(DEFAULT_MEMES, 6).map((meme) => (
               <MemeCard
                 key={meme.id}
                 meme={meme}
                 user={user}
-                onAction={handleMemeAction}
+                onAction={() => {}} // no-op for defaults
                 onTagClick={handleTagClick}
               />
             ))}
+          </div>
+        ) : (
+          // If <6 real memes, supplement with random defaults to make 6
+          <div className="memes-grid">
+            {(() => {
+              if (memes.length >= 6) {
+                return memes.slice(0, 12).map((meme) => (
+                  <MemeCard
+                    key={meme.id}
+                    meme={meme}
+                    user={user}
+                    onAction={handleMemeAction}
+                    onTagClick={handleTagClick}
+                  />
+                ));
+              }
+              // Use only those defaults whose id does not clash with real memes
+              const usedIds = new Set(memes.map(m => m.id));
+              const availableDefaults = DEFAULT_MEMES.filter(def => !usedIds.has(def.id));
+              const needed = 6 - memes.length;
+              const supplementDefaults = randomSample(availableDefaults, needed);
+              // Render real memes first, then defaults
+              const allMemes = [...memes, ...supplementDefaults];
+              return allMemes.map((meme) => (
+                <MemeCard
+                  key={meme.id}
+                  meme={meme}
+                  user={user}
+                  onAction={
+                    usedIds.has(meme.id) ? handleMemeAction : () => {}
+                  }
+                  onTagClick={handleTagClick}
+                />
+              ));
+            })()}
           </div>
         )}
       </section>
