@@ -55,13 +55,37 @@
 }
 
 .navbar-logo:hover, .navbar-logo:focus-visible {
-  filter: brightness(1.2) drop-shadow(0 0 16px #fff94fd4);
-  outline: 2.5px solid #ffec30;
+  /* Premium playful effect: gentle scale, soft glow, animated underline; remove harsh outline/background */
+  transform: scale(1.04) translateY(-1.5px);
+  filter: brightness(1.18) drop-shadow(0 0 10px #fffbeeb6);
   text-shadow:
-    0 2.2px 14px #fff94ff4,
-    0 1.5px 30px #ff50d8,
-    0 1.5px 4px #1ca6ffa1;
+    0 2.7px 18px #fffbbfa7,
+    0 1.5px 12px #ff50d896,
+    0 1.5px 4px #1ca6ffa7;
   background: linear-gradient(101deg, #fc6dec 10%, #ffd545 36%, #21fff0 57%, #fb955f 80%, #ff43ff 100%);
+  outline: none;
+  /* Animated underline using ::before */
+  position: relative;
+}
+.navbar-logo:hover::before, .navbar-logo:focus-visible::before {
+  opacity: 1;
+  transform: scaleX(1);
+}
+.navbar-logo::before {
+  content: '';
+  position: absolute;
+  left: 10%;
+  bottom: 0.11em;
+  width: 80%;
+  height: 0.18em;
+  border-radius: 1em;
+  background: linear-gradient(90deg, #fff481 25%, #ffbdef 75%, #fc64fecc 100%);
+  box-shadow: 0 2px 6px 0 #ffeefb90;
+  opacity: 0;
+  transform: scaleX(0.66);
+  transition: opacity 0.25s cubic-bezier(.42,1.05,.48,1.19), transform 0.27s cubic-bezier(.32,.92,.51,1.27);
+  pointer-events: none;
+  z-index: 7;
 }
 
 /* Slight glow under logo for fun, using an ::after pseudo-element */
