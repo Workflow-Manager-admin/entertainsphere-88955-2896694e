@@ -43,3 +43,27 @@ See https://nodejs.org/api/errors.html#errors_common_system_errors for more info
 Proxy error: Could not proxy request /api/movies/suggestions?mood=Sad&genre=Action from vscode-internal-3487-beta.beta01.cloud.kavia.ai to http://localhost:5000.
 See https://nodejs.org/api/errors.html#errors_common_system_errors for more information (HPE_INVALID_CONSTANT).
 
+Proxy error: Could not proxy request /api/movies/suggestions?mood=Happy&genre from vscode-internal-3487-beta.beta01.cloud.kavia.ai to http://localhost:5000.
+See https://nodejs.org/api/errors.html#errors_common_system_errors for more information (HPE_INVALID_CONSTANT).
+
+Proxy error: Could not proxy request /api/favorites?type=movies from vscode-internal-3487-beta.beta01.cloud.kavia.ai to http://localhost:5000.
+See https://nodejs.org/api/errors.html#errors_common_system_errors for more information (HPE_INVALID_CONSTANT).
+
+Proxy error: Could not proxy request /api/movies/suggestions?mood=Happy&genre from vscode-internal-3487-beta.beta01.cloud.kavia.ai to http://localhost:5000.
+See https://nodejs.org/api/errors.html#errors_common_system_errors for more information (HPE_INVALID_CONSTANT).
+
+Proxy error: Could not proxy request /api/favorites?type=movies from vscode-internal-3487-beta.beta01.cloud.kavia.ai to http://localhost:5000.
+See https://nodejs.org/api/errors.html#errors_common_system_errors for more information (HPE_INVALID_CONSTANT).
+
+Proxy error: Could not proxy request /api/memes from vscode-internal-3487-beta.beta01.cloud.kavia.ai to http://localhost:5000.
+See https://nodejs.org/api/errors.html#errors_common_system_errors for more information (HPE_INVALID_CONSTANT).
+
+Proxy error: Could not proxy request /api/memes from vscode-internal-3487-beta.beta01.cloud.kavia.ai to http://localhost:5000.
+See https://nodejs.org/api/errors.html#errors_common_system_errors for more information (HPE_INVALID_CONSTANT).
+
+Compiling...
+Compiled successfully!
+webpack compiled successfully
+Compiling...
+Compiled successfully!
+webpack compiled successfully

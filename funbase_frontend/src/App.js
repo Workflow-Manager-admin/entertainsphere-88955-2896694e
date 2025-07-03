@@ -4,6 +4,7 @@ import Navbar from './Navbar';
 import Home from './Home';
 import Memes from './Memes';
 import MovieSong from './MovieSong';
+import Quotes from './Quotes';
 import './App.css';
 import './Navbar.css';
 import './Home.css';
@@ -38,6 +39,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/memes" element={<Memes />} />
           <Route path="/moviesongs" element={<MovieSong />} />
+          <Route path="/quotes" element={<Quotes />} />
         </Routes>
       </div>
     </Router>

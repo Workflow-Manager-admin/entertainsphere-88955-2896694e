@@ -21,7 +21,7 @@ function Navbar() {
     { icon: "🎮", label: "Games", path: "/" }, // For now, Games points to Home
     { icon: "😂", label: "Memes", path: "/memes" },
     { icon: "🎬", label: "Movies/Songs", path: "/moviesongs" },
-    { icon: "💬", label: "Quotes", path: "#" },
+    { icon: "💬", label: "Quotes", path: "/quotes" },
   ];
 
   // PUBLIC_INTERFACE
