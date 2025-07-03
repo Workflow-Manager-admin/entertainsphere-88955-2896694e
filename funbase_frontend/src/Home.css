@@ -66,6 +66,124 @@
 .collage4 { right: 12%; top: 40%; }
 .collage5 { left: 50%; top: 21%; font-size: 3.1em; opacity: 0.19;}
 
+/* ========== Enhanced Heading Styles ========== */
+.heading-effect-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 0.2em;
+  z-index: 9;
+  width: 100%;
+}
+
+/* Confetti/Floating Emoji Animation */
+.confetti-emoji {
+  pointer-events: none;
+  user-select: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1.88em;
+  z-index: 10;
+}
+.confetti-emoji-float {
+  position: absolute;
+  font-size: 1.25em;
+  opacity: 0.68;
+  animation: confettiFloat 3.2s linear infinite alternate;
+  filter: drop-shadow(0 2px 8px #ffeefb93) blur(0.5px);
+  transition: opacity 0.19s;
+}
+@keyframes confettiFloat {
+  0% { transform: translateY(-8px) scale(1.1) rotate(-3deg);}
+  46% { opacity: 0.86;}
+  100% { 
+    transform: translateY(27px) scale(1.21) rotate(7deg);
+    opacity: 0.27;
+  }
+}
+
+.animated-gradient-title {
+  font-size: 3.35em;
+  font-weight: 900;
+  font-family: 'Poppins', 'Comic Sans MS', 'Segoe UI', Arial, sans-serif;
+  letter-spacing: -1.2px;
+  background: linear-gradient(98deg, #FC4FD8 7%, #fcff68 48%, #41fff2 90%, #FFA55C 100%);
+  background-size: 400% 100%;
+  background-clip: text; -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; text-fill-color: transparent;
+  animation: funbaseTitleGradientWave 4.8s infinite alternate ease-in;
+  text-shadow: 0 6px 38px #fff8ff88, 0 2px 12px #fcff45a7;
+  filter: drop-shadow(0 2.9px 24px #febcff46) brightness(1.09);
+  display: flex;
+  align-items: center;
+  gap: 0.22em;
+  margin-top: 2.3rem;
+  margin-bottom: 0.27em;
+  z-index: 20;
+  position: relative;
+}
+
+@keyframes funbaseTitleGradientWave {
+  0% { background-position: 0% 61%; }
+  100% { background-position: 100% 43%; }
+}
+
+.emoji-burst-left, .emoji-burst-right {
+  font-size: 1.17em;
+  margin-inline: 0.10em;
+  filter: drop-shadow(0 2px 10px #ffe8e8a9);
+  will-change: transform;
+  animation: emojiBurstPop 2.4s infinite alternate;
+}
+.emoji-burst-left { animation-delay: 0.11s; }
+.emoji-burst-right { animation-delay: 1.1s; }
+@keyframes emojiBurstPop {
+  0%, 100% { transform: scale(1) rotate(-8deg);}
+  25% { transform: scale(1.21) rotate(8deg);}
+  55% { transform: scale(0.99) rotate(-11deg);}
+  85% { transform: scale(1.11) rotate(11deg);}
+}
+
+.funbase-text-effect {
+  background: linear-gradient(101deg, #fc5efc 17%, #fff672 57%, #53fff0 87%, #ff914a 100%);
+  background-size: 300% 100%;
+  background-clip: text; -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; text-fill-color: transparent;
+  animation: funbaseTextEffect 6.6s infinite alternate;
+  padding: 0.03em 0.12em;
+  border-radius: 0.18em;
+  filter: brightness(1.14) drop-shadow(0 4px 28px #fffefc66);
+}
+@keyframes funbaseTextEffect {
+  0% { background-position: 0% 50%;}
+  100% { background-position: 100% 60%;}
+}
+
+/* Rainbow animated underline below the title */
+.animated-underline {
+  width: 68%;
+  max-width: 430px;
+  height: 0.33em;
+  margin: 0.12em auto 0.14em auto;
+  border-radius: 1em;
+  background: linear-gradient(90deg, #fff481 10%, #ffbdef 63%, #fc64fe 100%);
+  box-shadow: 0 2px 10px #ffeefbb8;
+  opacity: 1;
+  position: relative;
+  z-index: 22;
+  animation: animatedUnderlineWave 2.3s infinite alternate cubic-bezier(.32,.75,.86,1.38);
+}
+@keyframes animatedUnderlineWave {
+  0% { background-position: 0% 60%; filter: brightness(1.09);}
+  100% { background-position: 98% 43%; filter: brightness(1.29);}
+}
+
+/* ========== END Enhanced Heading Styles ========== */
+
+
 .home-title {
   font-size: 2.82em;
   letter-spacing: -0.5px;

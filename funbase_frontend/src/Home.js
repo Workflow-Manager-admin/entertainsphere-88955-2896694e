@@ -87,9 +87,26 @@ function Home() {
             <span className="collage-emoji collage4">🎬</span>
             <span className="collage-emoji collage5">🎉</span>
           </div>
-          <h1 className="home-title">
-            Welcome to <span className="brand-glow">FunBase</span>!
-          </h1>
+          {/* Enhanced visually animated home-title */}
+          <div className="heading-effect-wrapper">
+            {/* Emoji/Fun Confetti for festive background */}
+            <div className="confetti-emoji" aria-hidden="true">
+              {["🎉", "🤣", "🕹️", "🤩", "💯", "🚀", "😎", "🤸‍♂️", "🎯", "😃", "🦄"].map((emo, i) => (
+                <span className="confetti-emoji-float" key={i} style={{
+                  left: `${10 + Math.random() * 80}%`,
+                  animationDelay: `${Math.random() * 2.5}s`
+                }}>{emo}</span>
+              ))}
+            </div>
+            <h1 className="home-title animated-gradient-title">
+              <span className="emoji-burst-left" role="img" aria-label="Party Popper">🎉</span>
+              <span className="funbase-text-effect">
+                Welcome to <span className="brand-glow">FunBase</span>!
+              </span>
+              <span className="emoji-burst-right" role="img" aria-label="Unicorn">🦄</span>
+            </h1>
+            <div className="animated-underline"></div>
+          </div>
           <p className="home-subtext">
             Your one-stop playground for games, memes, movies, quotes, puzzles, and more.
             <br />
