@@ -47,50 +47,61 @@
 /* --- Enhanced time-travel date picker & quick buttons --- */
 .trfn-date-label {
   color: #9647db;
+  font-weight: 800;
+  letter-spacing: -0.2px;
 }
 
 .trfn-date-input {
   background: #fff6fc;
-  border: 2.2px solid #f7d2ff;
+  border: 2.4px solid #f7d2ff;
   color: #a014a6;
-  font-size: 1.07em;
+  font-size: 1.09em;
   font-weight: 700;
-  border-radius: 1.22em;
+  border-radius: 1.25em;
   padding: 0.22em 1em 0.22em 1em;
-  margin: 0 0.29em 0 0.55em;
+  margin: 0 0.32em 0 0.52em;
   outline: none;
-  box-shadow: 0 1.7px 10px #fcc0ff1a;
-  transition: border 0.15s;
+  box-shadow: 0 2px 11px #fcc0ff22;
+  transition: border 0.15s, background 0.16s;
 }
-.trfn-date-input:focus {
-  border: 2.3px solid #22ccff;
-  background: #e8fdff;
+.trfn-date-input:focus,
+.trfn-date-input:active {
+  border: 2.4px solid #22ccff;
+  background: #edf3ff;
 }
 
 .trfn-picker-btn {
-  background: linear-gradient(96deg, #fff0fc 0%, #eefffa 40%, #fff76c27 100%);
+  background: linear-gradient(96deg, #fff0fc 0%, #eefffa 42%, #fff76c27 100%);
   color: #cb2daa;
   border: none;
   font-weight: 900;
-  padding: 0.37em 1.25em;
-  border-radius: 1.7em;
-  box-shadow: 0 2px 13px #ffcafc16;
-  font-size: 1.09em;
+  padding: 0.39em 1.35em;
+  border-radius: 1.9em;
+  box-shadow: 0 2px 14px #ffcafc18;
+  font-size: 1.11em;
   cursor: pointer;
-  margin-left: 0.13em;
-  margin-right: 0.13em;
-  transition: background 0.16s, color 0.13s, transform 0.13s;
+  margin-left: 0.14em;
+  margin-right: 0.15em;
+  transition: background 0.14s, color 0.13s, transform 0.125s, box-shadow 0.16s;
   outline: none;
   position: relative;
-  z-index: 6;
+  z-index: 9;
+  border: 2.1px solid #fff0fc;
+}
+.trfn-picker-btn[aria-pressed="true"], .trfn-picker-btn.active {
+  background: linear-gradient(96deg, #eaeaff 22%, #ffe7fc 90%);
+  color: #7a22b7;
+  border: 2.1px solid #e2d5fc;
+  box-shadow: 0 4px 19px #d3aefb22;
 }
 .trfn-picker-btn:hover,
 .trfn-picker-btn:focus-visible {
-  background: linear-gradient(95deg, #ffedfe 10%, #a6ffe5 90%);
+  background: linear-gradient(95deg, #fcfbff 13%, #d8fff9 89%);
   color: #6b45ff;
-  transform: scale(1.08) translateY(-2px);
-  box-shadow: 0 3.5px 14px #ffcafc33, 0 2.5px 8px #d485ee19;
+  transform: scale(1.10) translateY(-2.5px) rotate(-3deg);
+  box-shadow: 0 4px 15px #ffcafc44, 0 2.5px 8px #fa83ce1e;
 }
+
 
 .trfn-scroll-wrap {
   max-width: 1000px;

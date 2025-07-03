@@ -1,62 +1,87 @@
 import React, { useEffect, useState } from "react";
 import "./TrendingFunNow.css";
 
-/**
- * PUBLIC_INTERFACE
- * TrendingFunNow: Enhanced time-travel fun discovery page!
- * - User picks a date: calendar, "Today", "Random", "Same Day Last Year" (playful controls)
- * - Fetches multiple types (facts, memes, holidays, news, videos) from fun events backend API for the chosen day
- * - Results are presented as responsive, visually themed, colorful sectioned cards per event type
- */
+// Optionally replace these with icons or add playful emoji
+const QUICK_FILTERS = [
+  { label: "Today", getValue: () => getTodayISO() },
+  { label: "Random", getValue: () => getRandomPastISO() },
+  { label: "Same Day Last Year", getValue: () => getSameDayLastYearISO() }
+];
+
+// PUBLIC_INTERFACE
+// TrendingFunNow polished version adds: filter bar, themed cards, playful time travel controls
 function TrendingFunNow() {
-  // States for date picker, events, UI status, etc
+  // UI state
   const [selectedDate, setSelectedDate] = useState(getTodayISO());
-  const [reloadKey, setReloadKey] = useState(Date.now());
+  const [viewLabel, setViewLabel] = useState("Today");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [events, setEvents] = useState([]);
+  const [funContent, setFunContent] = useState({
+    memes: [],
+    facts: [],
+    holidays: [],
+    news: [],
+    videos: []
+  });
 
-  // Fetch fun events each time date or reload requested
+  // Backend fetches are done per-date
   useEffect(() => {
+    loadContent(selectedDate);
+    // eslint-disable-next-line
+  }, [selectedDate]);
+
+  // PUBLIC_INTERFACE
+  function loadContent(dateStr) {
     setLoading(true);
     setError("");
-    setEvents([]);
-    fetch(`/api/fun-events?date=${selectedDate}`)
-      .then(r => r.json())
-      .then(data => {
-        if (!data || data.error) throw new Error(data.error || "No events.");
-        setEvents(Array.isArray(data) ? data : []);
+    setFunContent({
+      memes: [],
+      facts: [],
+      holidays: [],
+      news: [],
+      videos: []
+    });
+
+    fetch(`/api/fun-events?date=${dateStr}`)
+      .then((r) => r.json())
+      .then((data) => {
+        if (!data || data.error) throw new Error(data.error || "No results.");
+        // Expected: an array of fun events with type ('meme', 'fact', etc)
+        const grouped = { memes: [], facts: [], holidays: [], news: [], videos: [] };
+        (Array.isArray(data) ? data : []).forEach((ev) => {
+          if (ev.type === "meme") grouped.memes.push(ev);
+          else if (ev.type === "fact") grouped.facts.push(ev);
+          else if (ev.type === "holiday") grouped.holidays.push(ev);
+          else if (ev.type === "news") grouped.news.push(ev);
+          else if (ev.type === "video") grouped.videos.push(ev);
+        });
+        setFunContent(grouped);
         setLoading(false);
       })
-      .catch(e => {
-        setError("Unable to load fun events for this date.");
+      .catch(() => {
+        setError("Unable to load fun content for this date!");
         setLoading(false);
       });
-  }, [selectedDate, reloadKey]);
+  }
 
-  // Quick date controls
-  function pickToday() {
-    setSelectedDate(getTodayISO());
-    setReloadKey(Date.now());
+  // PUBLIC_INTERFACE
+  function handleFilterQuick(label) {
+    const picker = QUICK_FILTERS.find((f) => f.label === label);
+    if (picker) {
+      setSelectedDate(picker.getValue());
+      setViewLabel(label);
+    }
   }
-  function pickRandom() {
-    setSelectedDate(getRandomPastISO());
-    setReloadKey(Date.now());
-  }
-  function pickLastYear() {
-    setSelectedDate(getSameDayLastYearISO());
-    setReloadKey(Date.now());
-  }
-  function chooseDate(e) {
+
+  function handleDateChange(e) {
     setSelectedDate(e.target.value);
-    setReloadKey(Date.now());
+    setViewLabel("");
   }
 
-  // Render-friendly date label
-  function prettyDateLabel(dateStr) {
+  // Helper: render date label
+  function prettyDate(dateStr) {
     try {
-      const today = getTodayISO();
-      if (dateStr === today) return "Today";
+      if (dateStr === getTodayISO()) return "Today";
       const dt = new Date(dateStr);
       return dt.toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" });
     } catch {
@@ -64,27 +89,21 @@ function TrendingFunNow() {
     }
   }
 
-  // Cards grouped by event type
-  const grouped = groupFunEvents(events);
-
-  // Main UI
+  // Card renderers per type
   return (
     <main className="trfn-main">
-      <h1 className="trfn-title">Trending Fun Now <span role="img" aria-label="sparkles">✨</span></h1>
+      <h1 className="trfn-title">
+        Trending Fun Now <span aria-label="sparkles" role="img">✨</span>
+      </h1>
       <div className="trfn-intro-sub">
-        Hop across time for fun! <br />
-        Choose a date and discover epic memes, curious facts, zany holidays, viral news, and videos that trended on that day.<br />
-        <span style={{ fontSize: "1.37em" }}>
-          Play with time-travel! <span role="img" aria-label="party popper">🎉</span>
-        </span>
+        <span>🎲 Play with time-travel for fun!</span>
+        <br />
+        Pick a date or try quick options to see trending memes, quirky holidays, wild facts, viral news, and videos from that day!
       </div>
-      {/* Time-travel controls: Date picker UI + themed buttons */}
+      {/* --- Time-travel filter bar --- */}
       <section style={{ textAlign: "center", marginBottom: "1.9em" }}>
-        <div style={{ display: "inline-flex", flexWrap: "wrap", gap: "0.77em", alignItems: "center" }}>
-          <label className="trfn-date-label" htmlFor="date-picker" style={{
-            fontWeight: 700,
-            fontSize: "1.15em"
-          }}>
+        <div style={{ display: "inline-flex", flexWrap: "wrap", gap: "0.67em", alignItems: "center", marginBottom: 7 }}>
+          <label className="trfn-date-label" htmlFor="date-picker" style={{ fontWeight: 700, fontSize: "1.12em" }}>
             Pick a date:
           </label>
           <input
@@ -92,50 +111,71 @@ function TrendingFunNow() {
             type="date"
             className="trfn-date-input"
             value={selectedDate}
-            onChange={chooseDate}
+            onChange={handleDateChange}
             max={getTodayISO()}
+            aria-label="Pick date"
           />
-          <button className="trfn-picker-btn" onClick={pickToday} title="Jump to Today">Today</button>
-          <button className="trfn-picker-btn" onClick={pickRandom} title="Random fun date">Random</button>
-          <button className="trfn-picker-btn" onClick={pickLastYear} title="This day, last year">Same Day Last Year</button>
+          {QUICK_FILTERS.map((q) =>
+            <button
+              className="trfn-picker-btn"
+              key={q.label}
+              onClick={() => handleFilterQuick(q.label)}
+              title={q.label === "Random" ? "Go on a random adventure!" : q.label}
+              aria-pressed={viewLabel === q.label}
+            >
+              {q.label}
+            </button>
+          )}
         </div>
         <div style={{
-          marginTop: "0.7em",
-          fontSize: "1.07em",
+          marginTop: "0.55em",
+          fontSize: "1.09em",
           color: "#b38dd8",
           fontWeight: 600
         }}>
-          Showing fun for: <span style={{ color: "#e45cbe" }}>{prettyDateLabel(selectedDate)}</span>
+          Showing fun for: <span style={{ color: "#e45cbe" }}>{prettyDate(selectedDate)}</span>
         </div>
       </section>
-
-      {/* Loader / error state */}
+      {/* --- Main results, colorful themed sections --- */}
       {loading ? (
-        <div className="trfn-loading">Fetching fun for {prettyDateLabel(selectedDate)}…</div>
+        <div className="trfn-loading">
+          Fetching fun content for {prettyDate(selectedDate)} <span aria-label="wait" role="img">🌀</span>
+        </div>
       ) : error ? (
         <div className="trfn-err">{error}</div>
       ) : (
         <div className="trfn-scroll-wrap">
-          {/* Show each event section in playful colors */}
-          {["holiday", "meme", "fact", "news", "video"].map((type) =>
-            grouped[type]?.length ? (
-              <FunEventSection key={type} type={type} events={grouped[type]} />
-            ) : null
+          {funContent.holidays.length > 0 && (
+            <SectionWrap type="holiday" events={funContent.holidays} />
           )}
-          {/* Show fallback when nothing returned */}
-          {Object.values(grouped).flat().length === 0 && (
-            <section className="trfn-section">
-              <div style={{
-                fontSize: "1.32em",
-                fontWeight: 700,
-                color: "#ae4bea",
-                textAlign: "center",
-                padding: "2.2em 0"
-              }}>
-                No fun events for this date! Try another adventure.<br />
-                <span style={{ fontSize: "2.1em" }}>🙃</span>
-              </div>
-            </section>
+          {funContent.memes.length > 0 && (
+            <SectionWrap type="meme" events={funContent.memes} />
+          )}
+          {funContent.facts.length > 0 && (
+            <SectionWrap type="fact" events={funContent.facts} />
+          )}
+          {funContent.news.length > 0 && (
+            <SectionWrap type="news" events={funContent.news} />
+          )}
+          {funContent.videos.length > 0 && (
+            <SectionWrap type="video" events={funContent.videos} />
+          )}
+          {(funContent.holidays.length +
+            funContent.memes.length +
+            funContent.facts.length +
+            funContent.news.length +
+            funContent.videos.length === 0) && (
+              <section className="trfn-section">
+                <div style={{
+                  fontSize: "1.33em",
+                  fontWeight: 700,
+                  color: "#ae4bea",
+                  textAlign: "center",
+                  padding: "2.1em 0"
+                }}>
+                  No fun content for this date, try another! <span style={{ fontSize: "2em" }}>🛸</span>
+                </div>
+              </section>
           )}
         </div>
       )}
@@ -143,89 +183,38 @@ function TrendingFunNow() {
   );
 }
 
-/** Helper: today as yyyy-mm-dd ISO string */
-function getTodayISO() {
-  return new Date().toISOString().slice(0, 10);
-}
-
-/** Helper: random day in last 12 years, always valid date */
-function getRandomPastISO() {
-  const today = new Date();
-  const minYear = today.getFullYear() - 12;
-  const year = randBetween(minYear, today.getFullYear());
-  const month = randBetween(0, 11);
-  const day = randBetween(1, 28); // Safe for all months
-  return new Date(year, month, day).toISOString().slice(0, 10);
-}
-
-/** Helper: same day, last year */
-function getSameDayLastYearISO() {
-  const now = new Date();
-  const lastYear = new Date(now.getFullYear() - 1, now.getMonth(), now.getDate());
-  return lastYear.toISOString().slice(0, 10);
-}
-
-function randBetween(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-/** Group array of events into { type: [events] } bucket */
-function groupFunEvents(evts) {
-  const map = {};
-  (evts || []).forEach(ev => {
-    if (!map[ev.type]) map[ev.type] = [];
-    map[ev.type].push(ev);
-  });
-  return map;
-}
-
-/**
- * Section for event type: shows all cards for one type (facts, memes, ...)
- * @param {object} props
- * @param {string} props.type   - event type
- * @param {array}  props.events - fun events array
- */
-function FunEventSection({ type, events }) {
-  const { title, emoji } = getSectionMeta(type);
+// Section renderer: themed for per-type | fun section
+function SectionWrap({ type, events }) {
+  const lookup = {
+    holiday: { label: "Funky Holidays", emoji: "🎈" },
+    meme: { label: "Epic Memes", emoji: "😂" },
+    fact: { label: "Wacky Facts", emoji: "💡" },
+    news: { label: "Viral News", emoji: "📰" },
+    video: { label: "Fun Videos", emoji: "🎬" },
+  };
+  const info = lookup[type] || { label: "Fun Time", emoji: "🎉" };
   let gridClass = "trfn-card-flex";
   if (type === "meme") gridClass = "trfn-meme-grid";
   else if (type === "fact" || type === "holiday" || type === "news") gridClass = "trfn-fact-grid";
   return (
     <section className={`trfn-section trfn-${type}`}>
       <h2>
-        <span role="img" aria-label={title}>{emoji}</span> {title}
+        <span aria-label={info.label} role="img">{info.emoji}</span> {info.label}
       </h2>
       <div className={gridClass}>
-        {events.map((ev, idx) => (
-          <FunEventCard key={ev.id || idx} event={ev} type={type} />
+        {events.map((item, idx) => (
+          <FunCard key={item.id || idx} event={item} type={type} />
         ))}
       </div>
     </section>
   );
 }
 
-// Section titles and emoji per type
-function getSectionMeta(type) {
-  switch (type) {
-    case "holiday": return { title: "Notable Holidays", emoji: "🎈" };
-    case "meme": return { title: "Epic Memes", emoji: "😂" };
-    case "fact": return { title: "Bizarre Facts", emoji: "💡" };
-    case "news": return { title: "Viral News", emoji: "📰" };
-    case "video": return { title: "Fun Videos", emoji: "🎬" };
-    default: return { title: "Fun", emoji: "🎉" };
-  }
-}
-
-/**
- * Card for each fun event. Visual treatment depends on type.
- * @param {object} props
- * @param {object} props.event
- * @param {string} props.type
- */
-function FunEventCard({ event, type }) {
+// Per-card visual depending on type
+function FunCard({ event, type }) {
   const sourceLinks = (event.sources || []).filter(Boolean);
 
-  // Meme cards
+  // Meme card
   if (type === "meme") {
     return (
       <div className="trfn-meme-card" tabIndex={0}>
@@ -234,7 +223,7 @@ function FunEventCard({ event, type }) {
         <div className="trfn-meme-meta">
           <div className="trfn-meme-title">{event.title || event.description || "Meme"}</div>
           {event.author && <span className="trfn-meme-author">by {event.author}</span>}
-          {sourceLinks.map(src => (
+          {sourceLinks.map((src) => (
             <a
               key={src}
               href={src}
@@ -248,15 +237,11 @@ function FunEventCard({ event, type }) {
     );
   }
 
-  // Fact cards (and reused for holiday/news)
-  if (type === "fact" || type === "holiday" || type === "news") {
-    let bg = undefined, color = undefined, icon = "💡";
-    if (type === "holiday") {
-      bg = "#f3eaff"; color = "#622bb7"; icon = "🎈";
-    }
-    if (type === "news") {
-      bg = "#fffde7"; color = "#712"; icon = "📰";
-    }
+  // Fact, holiday, news - decorated info card
+  if (type === "holiday" || type === "fact" || type === "news") {
+    let bg, color, icon = "💡";
+    if (type === "holiday") { bg = "#f3eaff"; color = "#622bb7"; icon = "🎈"; }
+    if (type === "news") { bg = "#fffde7"; color = "#712"; icon = "📰"; }
     return (
       <div
         className="trfn-fact-card"
@@ -290,7 +275,7 @@ function FunEventCard({ event, type }) {
     );
   }
 
-  // Video cards
+  // Video
   if (type === "video") {
     return (
       <div className="trfn-card-flex" style={{ maxWidth: 350, margin: 4 }}>
@@ -330,7 +315,7 @@ function FunEventCard({ event, type }) {
     );
   }
 
-  // Default fallback fun
+  // Default fallback card
   return (
     <div className="trfn-fact-card">
       <span className="trfn-fact-icon">🎉</span>
@@ -339,7 +324,27 @@ function FunEventCard({ event, type }) {
   );
 }
 
-/** Helper: Convert YouTube standard/watch/shorts URLs to embed */
+// --- DATE HELPERS --- //
+function getTodayISO() {
+  return new Date().toISOString().slice(0, 10);
+}
+function getRandomPastISO() {
+  const today = new Date();
+  const minYear = today.getFullYear() - 12;
+  const year = randBetween(minYear, today.getFullYear());
+  const month = randBetween(0, 11);
+  const day = randBetween(1, 28);
+  return new Date(year, month, day).toISOString().slice(0, 10);
+}
+function getSameDayLastYearISO() {
+  const now = new Date();
+  const lastYear = new Date(now.getFullYear() - 1, now.getMonth(), now.getDate());
+  return lastYear.toISOString().slice(0, 10);
+}
+function randBetween(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+// YouTube embed helper
 function embedYoutube(url) {
   if (!url) return "";
   const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|watch\?v=|v\/|shorts\/))([A-Za-z0-9_-]{11})/);

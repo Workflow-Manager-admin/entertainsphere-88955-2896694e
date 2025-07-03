@@ -6,9 +6,9 @@ Attempting to bind to HOST environment variable: 0.0.0.0
 If this was unintentional, check that you haven't mistakenly set it in your shell.
 Learn more here: https://cra.link/advanced-config
 
-(node:49021) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+(node:50381) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
 (Use `node --trace-deprecation ...` to show where the warning was created)
-(node:49021) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+(node:50381) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
 Starting the development server...
 
 Compiled successfully!
@@ -23,8 +23,247 @@ To create a production build, use npm run build.
 
 webpack compiled successfully
 Compiling...
-Compiled successfully!
-webpack compiled successfully
+Failed to compile.
+
+[eslint] 
+src/TrendingFunNow.js
+Syntax error: Identifier 'getTodayISO' has already been declared. (358:9) (358:9)
+ERROR in ./src/TrendingFunNow.js
+Module build failed (from ./node_modules/babel-loader/lib/index.js):
+SyntaxError: /home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/src/TrendingFunNow.js: Identifier 'getTodayISO' has already been declared. (358:9)
+
+  356 |
+  357 | /** Helper: today as yyyy-mm-dd ISO string */
+> 358 | function getTodayISO() {
+      |          ^
+  359 |   return new Date().toISOString().slice(0, 10);
+  360 | }
+  361 |
+    at constructor (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:360:19)
+    at FlowParserMixin.raise (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:3327:19)
+    at FlowScopeHandler.checkRedeclarationInScope (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:1555:19)
+    at FlowScopeHandler.declareName (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:1521:12)
+    at FlowScopeHandler.declareName (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:1622:11)
+    at FlowParserMixin.registerFunctionStatementId (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:13106:16)
+    at FlowParserMixin.parseFunction (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:13090:12)
+    at FlowParserMixin.parseFunctionStatement (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:12769:17)
+    at FlowParserMixin.parseStatementContent (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:12430:21)
+    at FlowParserMixin.parseStatementLike (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:12406:17)
+    at FlowParserMixin.parseStatementLike (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:5140:24)
+    at FlowParserMixin.parseModuleItem (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:12383:17)
+    at FlowParserMixin.parseBlockOrModuleBlockBody (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:12960:36)
+    at FlowParserMixin.parseBlockBody (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:12953:10)
+    at FlowParserMixin.parseProgram (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:12280:10)
+    at FlowParserMixin.parseTopLevel (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:12270:25)
+    at FlowParserMixin.parseTopLevel (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:5909:28)
+    at FlowParserMixin.parse (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:14120:10)
+    at parse (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:14154:38)
+    at parser (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/core/lib/parser/index.js:41:34)
+    at parser.next (<anonymous>)
+    at normalizeFile (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/core/lib/transformation/normalize-file.js:64:37)
+    at normalizeFile.next (<anonymous>)
+    at run (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/core/lib/transformation/index.js:22:50)
+    at run.next (<anonymous>)
+    at transform (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/core/lib/transform.js:22:33)
+    at transform.next (<anonymous>)
+    at step (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/gensync/index.js:261:32)
+    at /home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/gensync/index.js:273:13
+    at async.call.result.err.err (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/gensync/index.js:223:11)
+    at /home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/gensync/index.js:189:28
+    at /home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/core/lib/gensync-utils/async.js:67:7
+    at /home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/gensync/index.js:113:33
+    at step (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/gensync/index.js:287:14)
+    at /home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/gensync/index.js:273:13
+    at async.call.result.err.err (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/gensync/index.js:223:11)
+
+ERROR in [eslint] 
+src/TrendingFunNow.js
+  Line 358:9:  Parsing error: Identifier 'getTodayISO' has already been declared. (358:9)
+
+webpack compiled with 2 errors
+Compiling...
+Failed to compile.
+
+[eslint] 
+src/TrendingFunNow.js
+Syntax error: Only one default export allowed per module. (533:0) (533:undefined)
+ERROR in ./src/TrendingFunNow.js
+Module build failed (from ./node_modules/babel-loader/lib/index.js):
+SyntaxError: /home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/src/TrendingFunNow.js: Only one default export allowed per module. (533:0)
+
+  531 | }
+  532 |
+> 533 | export default TrendingFunNow;
+      | ^
+  534 |
+    at constructor (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:360:19)
+    at FlowParserMixin.raise (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:3327:19)
+    at FlowParserMixin.checkDuplicateExports (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:13707:14)
+    at FlowParserMixin.checkExport (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:13637:14)
+    at FlowParserMixin.parseExport (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:13472:12)
+    at FlowParserMixin.parseStatementContent (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:12519:27)
+    at FlowParserMixin.parseStatementLike (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:12406:17)
+    at FlowParserMixin.parseStatementLike (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:5140:24)
+    at FlowParserMixin.parseModuleItem (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:12383:17)
+    at FlowParserMixin.parseBlockOrModuleBlockBody (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:12960:36)
+    at FlowParserMixin.parseBlockBody (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:12953:10)
+    at FlowParserMixin.parseProgram (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:12280:10)
+    at FlowParserMixin.parseTopLevel (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:12270:25)
+    at FlowParserMixin.parseTopLevel (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:5909:28)
+    at FlowParserMixin.parse (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:14120:10)
+    at parse (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:14154:38)
+    at parser (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/core/lib/parser/index.js:41:34)
+    at parser.next (<anonymous>)
+    at normalizeFile (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/core/lib/transformation/normalize-file.js:64:37)
+    at normalizeFile.next (<anonymous>)
+    at run (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/core/lib/transformation/index.js:22:50)
+    at run.next (<anonymous>)
+    at transform (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/core/lib/transform.js:22:33)
+    at transform.next (<anonymous>)
+    at step (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/gensync/index.js:261:32)
+    at /home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/gensync/index.js:273:13
+    at async.call.result.err.err (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/gensync/index.js:223:11)
+
+ERROR in [eslint] 
+src/TrendingFunNow.js
+  Line 533:  Parsing error: Only one default export allowed per module. (533:0)
+
+webpack compiled with 2 errors
+Compiling...
+Failed to compile.
+
+Attempted import error: './TrendingFunNow' does not contain a default export (imported as 'TrendingFunNow').
+WARNING in [eslint] 
+src/TrendingFunNow.js
+  Line 13:10:   'TrendingFunNow' is defined but never used   no-unused-vars
+  Line 356:10:  'groupFunEvents' is defined but never used   no-unused-vars
+  Line 371:10:  'FunEventSection' is defined but never used  no-unused-vars
+
+ERROR in ./src/App.js 57:40-54
+export 'default' (imported as 'TrendingFunNow') was not found in './TrendingFunNow' (module has no exports)
+
+webpack compiled with 1 error and 1 warning
+Compiling...
+Failed to compile.
+
+[eslint] 
+src/TrendingFunNow.js
+Syntax error: Missing semicolon. (1:37) (1:37)
+ERROR in ./src/TrendingFunNow.js
+Module build failed (from ./node_modules/babel-loader/lib/index.js):
+SyntaxError: /home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/src/TrendingFunNow.js: Missing semicolon. (1:37)
+
+> 1 | export default TrendingFunNow;iexport default TrendingFunNow;mexport default TrendingFunNow;pexport default TrendingFunNow;oexport default TrendingFunNow;rexport default TrendingFunNow;texport default TrendingFunNow; export default TrendingFunNow;Rexport default TrendingFunNow;eexport default TrendingFunNow;aexport default TrendingFunNow;cexport default TrendingFunNow;texport default TrendingFunNow;,export default TrendingFunNow; export default TrendingFunNow;{export default TrendingFunNow; export default TrendingFunNow;uexport default TrendingFunNow;sexport default TrendingFunNow;eexport default TrendingFunNow;Eexport default TrendingFunNow;fexport default TrendingFunNow;fexport default TrendingFunNow;eexport default TrendingFunNow;cexport default TrendingFunNow;texport default TrendingFunNow;,export default TrendingFunNow; export default TrendingFunNow;uexport default TrendingFunNow;sexport default TrendingFunNow;eexport default TrendingFunNow;Sexport default TrendingFunNow;texport default TrendingFunNow;aexport default TrendingFunNow;texport default TrendingFunNow;eexport default TrendingFunNow; export default TrendingFunNow;}export default TrendingFunNow; export default TrendingFunNow;fexport default TrendingFunNow;rexport default TrendingFunNow;oexport default TrendingFunNow;mexport default TrendingFunNow; export default TrendingFunNow;"export default TrendingFunNow;rexport default TrendingFunNow;eexport default TrendingFunNow;aexport default TrendingFunNow;cexport default TrendingFunNow;texport default TrendingFunNow;"export default TrendingFunNow;;export default TrendingFunNow;
+    |                                      ^
+  2 | export default TrendingFunNow;iexport default TrendingFunNow;mexport default TrendingFunNow;pexport default TrendingFunNow;oexport default TrendingFunNow;rexport default TrendingFunNow;texport default TrendingFunNow; export default TrendingFunNow;"export default TrendingFunNow;.export default TrendingFunNow;/export default TrendingFunNow;Texport default TrendingFunNow;rexport default TrendingFunNow;eexport default TrendingFunNow;nexport default TrendingFunNow;dexport default TrendingFunNow;iexport default TrendingFunNow;nexport default TrendingFunNow;gexport default TrendingFunNow;Fexport default TrendingFunNow;uexport default TrendingFunNow;nexport default TrendingFunNow;Nexport default TrendingFunNow;oexport default TrendingFunNow;wexport default TrendingFunNow;.export default TrendingFunNow;cexport default TrendingFunNow;sexport default TrendingFunNow;sexport default TrendingFunNow;"export default TrendingFunNow;;export default TrendingFunNow;
+  3 | export default TrendingFunNow;
+  4 | export default TrendingFunNow;/export default TrendingFunNow;/export default TrendingFunNow; export default TrendingFunNow;Oexport default TrendingFunNow;pexport default TrendingFunNow;texport default TrendingFunNow;iexport default TrendingFunNow;oexport default TrendingFunNow;nexport default TrendingFunNow;aexport default TrendingFunNow;lexport default TrendingFunNow;lexport default TrendingFunNow;yexport default TrendingFunNow; export default TrendingFunNow;rexport default TrendingFunNow;eexport default TrendingFunNow;pexport default TrendingFunNow;lexport default TrendingFunNow;aexport default TrendingFunNow;cexport default TrendingFunNow;eexport default TrendingFunNow; export default TrendingFunNow;texport default TrendingFunNow;hexport default TrendingFunNow;eexport default TrendingFunNow;sexport default TrendingFunNow;eexport default TrendingFunNow; export default TrendingFunNow;wexport default TrendingFunNow;iexport default TrendingFunNow;texport default TrendingFunNow;hexport default TrendingFunNow; export default TrendingFunNow;iexport default TrendingFunNow;cexport default TrendingFunNow;oexport default TrendingFunNow;nexport default TrendingFunNow;sexport default TrendingFunNow; export default TrendingFunNow;oexport default TrendingFunNow;rexport default TrendingFunNow; export default TrendingFunNow;aexport default TrendingFunNow;dexport default TrendingFunNow;dexport default TrendingFunNow; export default TrendingFunNow;pexport default TrendingFunNow;lexport default TrendingFunNow;aexport default TrendingFunNow;yexport default TrendingFunNow;fexport default TrendingFunNow;uexport default TrendingFunNow;lexport default TrendingFunNow; export default TrendingFunNow;eexport default TrendingFunNow;mexport default TrendingFunNow;oexport default TrendingFunNow;jexport default TrendingFunNow;iexport default TrendingFunNow;
+    at constructor (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:360:19)
+    at FlowParserMixin.raise (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:3327:19)
+    at FlowParserMixin.semicolon (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:3653:10)
+    at FlowParserMixin.parseExpressionStatement (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:12929:10)
+    at FlowParserMixin.parseExpressionStatement (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:5162:18)
+    at FlowParserMixin.parseStatementContent (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:12543:19)
+    at FlowParserMixin.parseStatementLike (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:12406:17)
+    at FlowParserMixin.parseStatementLike (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:5140:24)
+    at FlowParserMixin.parseModuleItem (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:12383:17)
+    at FlowParserMixin.parseBlockOrModuleBlockBody (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:12960:36)
+    at FlowParserMixin.parseBlockBody (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:12953:10)
+    at FlowParserMixin.parseProgram (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:12280:10)
+    at FlowParserMixin.parseTopLevel (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:12270:25)
+    at FlowParserMixin.parseTopLevel (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:5909:28)
+    at FlowParserMixin.parse (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:14120:10)
+    at parse (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:14154:38)
+    at parser (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/core/lib/parser/index.js:41:34)
+    at parser.next (<anonymous>)
+    at normalizeFile (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/core/lib/transformation/normalize-file.js:64:37)
+    at normalizeFile.next (<anonymous>)
+    at run (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/core/lib/transformation/index.js:22:50)
+    at run.next (<anonymous>)
+    at transform (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/core/lib/transform.js:22:33)
+    at transform.next (<anonymous>)
+    at step (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/gensync/index.js:261:32)
+    at /home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/gensync/index.js:273:13
+    at async.call.result.err.err (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/gensync/index.js:223:11)
+
+ERROR in [eslint] 
+src/TrendingFunNow.js
+  Line 1:37:  Parsing error: Missing semicolon. (1:37)
+
+webpack compiled with 2 errors
+Compiling...
+Failed to compile.
+
+[eslint] 
+src/TrendingFunNow.js
+Syntax error: Expecting Unicode escape sequence \uXXXX. (350:90) (350:90)
+ERROR in ./src/TrendingFunNow.js
+Module build failed (from ./node_modules/babel-loader/lib/index.js):
+SyntaxError: /home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/src/TrendingFunNow.js: Expecting Unicode escape sequence \uXXXX. (350:90)
+
+  348 | function embedYoutube(url) {
+  349 |   if (!url) return "";
+> 350 |   const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|watch\\?v=|v\\/|shorts\\/))([A-Za-z0-9_-]{11})/);
+      |                                                                                           ^
+  351 |   if (!match) return url;
+  352 |   return `https://www.youtube.com/embed/${match[1]}`;
+  353 | }
+    at constructor (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:360:19)
+    at FlowParserMixin.raise (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:3327:19)
+    at FlowParserMixin.readWord1 (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:3287:16)
+    at FlowParserMixin.readWord (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:3307:23)
+    at FlowParserMixin.getTokenFromCode (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:3030:16)
+    at FlowParserMixin.getTokenFromCode (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:6970:11)
+    at FlowParserMixin.getTokenFromCode (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:5419:13)
+    at FlowParserMixin.nextToken (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:2510:10)
+    at FlowParserMixin.next (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:2423:10)
+    at FlowParserMixin.parseExprOp (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:10616:14)
+    at FlowParserMixin.parseExprOps (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:10585:17)
+    at FlowParserMixin.parseMaybeConditional (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:10558:23)
+    at FlowParserMixin.parseMaybeAssign (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:10521:21)
+    at FlowParserMixin.parseMaybeAssign (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:5773:18)
+    at /home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:10491:39
+    at FlowParserMixin.allowInAnd (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:12100:12)
+    at FlowParserMixin.parseMaybeAssignAllowIn (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:10491:17)
+    at FlowParserMixin.parseExprListItem (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:11858:18)
+    at FlowParserMixin.parseCallExpressionArguments (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:10927:22)
+    at FlowParserMixin.parseCoverCallAndAsyncArrowHead (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:10861:29)
+    at FlowParserMixin.parseSubscript (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:10798:19)
+    at FlowParserMixin.parseSubscript (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:5874:18)
+    at FlowParserMixin.parseSubscripts (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:10771:19)
+    at FlowParserMixin.parseSubscripts (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:5840:18)
+    at FlowParserMixin.parseExprSubscripts (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:10762:17)
+    at FlowParserMixin.parseUpdate (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:10743:21)
+    at FlowParserMixin.parseMaybeUnary (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:10723:23)
+    at FlowParserMixin.parseMaybeUnaryOrPrivate (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:10576:61)
+    at FlowParserMixin.parseExprOps (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:10581:23)
+    at FlowParserMixin.parseMaybeConditional (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:10558:23)
+    at FlowParserMixin.parseMaybeAssign (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:10521:21)
+    at FlowParserMixin.parseMaybeAssign (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:5773:18)
+    at /home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:10491:39
+    at FlowParserMixin.allowInAnd (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:12095:16)
+    at FlowParserMixin.parseMaybeAssignAllowIn (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:10491:17)
+    at FlowParserMixin.parseVar (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:13028:91)
+    at FlowParserMixin.parseVarStatement (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:12874:10)
+    at FlowParserMixin.parseStatementContent (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:12489:23)
+    at FlowParserMixin.parseStatementLike (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:12406:17)
+    at FlowParserMixin.parseStatementLike (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:5140:24)
+    at FlowParserMixin.parseStatementListItem (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:12386:17)
+    at FlowParserMixin.parseBlockOrModuleBlockBody (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:12960:61)
+    at FlowParserMixin.parseBlockBody (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:12953:10)
+    at FlowParserMixin.parseBlock (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:12941:10)
+    at FlowParserMixin.parseFunctionBody (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:11783:24)
+    at FlowParserMixin.parseFunctionBody (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:5117:11)
+    at FlowParserMixin.parseFunctionBodyAndFinish (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:11769:10)
+    at FlowParserMixin.parseFunctionBodyAndFinish (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:5125:18)
+    at /home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:13085:12
+    at FlowParserMixin.withSmartMixTopicForbiddingContext (/home/kavia/workspace/code-generation/entertainsphere-88955-2896694e/funbase_frontend/node_modules/@babel/parser/lib/index.js:12077:14)
+
+ERROR in [eslint] 
+src/TrendingFunNow.js
+  Line 350:90:  Parsing error: Expecting Unicode escape sequence \uXXXX. (350:90)
+
+webpack compiled with 2 errors
 Compiling...
 Compiled successfully!
 webpack compiled successfully
